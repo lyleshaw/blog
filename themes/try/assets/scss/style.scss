@@ -79,7 +79,7 @@ blockquote {
     font-weight: bold;
     font-style: normal;
 
-    &::before {
+    #{if(&, "&", "*")}:before {
       content: "—— ";
     }
   }
@@ -673,7 +673,7 @@ a.footnote-ref {
   .tag {
     margin-right: .5em;
 
-    &::before {
+    #{if(&, "&", "*")}:before {
       content: "#"
     }
   }

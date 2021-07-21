@@ -1,6 +1,6 @@
 .home {
     font-family: STShusong, serif;
-    &::before {
+    #{if(&, "&", "*")}:before {
         background-image: $homePoster;
         background-repeat: no-repeat;
         background-size: cover;

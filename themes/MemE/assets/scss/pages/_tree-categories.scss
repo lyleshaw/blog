@@ -14,7 +14,7 @@
 .list-categories > li {
     position: relative;
 
-    &::before {
+    #{if(&, "&", "*")}:before {
         content: " ";
         position: absolute;
         top: 2.4em;

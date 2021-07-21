@@ -63,7 +63,7 @@
         border: none;
         margin: 2.427em 0 1.5em;
         text-align: center;
-        &::after {
+        #{if(&, "&", "*")}:after {
             content: "···";
             letter-spacing: 2em;
             padding-left: 2em;
@@ -122,7 +122,7 @@ ol, ul {
         height: 1px;
         border: none;
         background-color: var(--color-contrast-medium);
-        &::after {
+        #{if(&, "&", "*")}:after {
             content: none;
         }
     }

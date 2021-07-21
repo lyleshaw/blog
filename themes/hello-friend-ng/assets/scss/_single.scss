@@ -73,7 +73,7 @@
     .tag {
       margin-right: 0.5em;
 
-      &::before {
+      #{if(&, "&", "*")}:before {
         content: "#";
       }
     }

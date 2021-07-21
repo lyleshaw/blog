@@ -60,7 +60,7 @@
         ol {
             counter-reset: item;
             li {
-                &::before {
+                #{if(&, "&", "*")}:before {
                     counter-increment: item;
                     margin-right: 0.5em;
                 }
@@ -69,13 +69,13 @@
     }
     // First level
     .contents > ol > li {
-        &::before {
+        #{if(&, "&", "*")}:before {
             content: counters(item, ".") ".";
         }
     }
     // Sub level
     .contents li > ol > li {
-        &::before {
+        #{if(&, "&", "*")}:before {
             content: counters(item, ".");
         }
     }
