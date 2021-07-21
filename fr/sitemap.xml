@@ -3,58 +3,58 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
-    <loc>https://lyleshaw.com/fr/categories/</loc>
+    <loc>https://lyleshaw.github.io/blog/fr/categories/</loc>
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="https://lyleshaw.com/categories/"
+                href="https://lyleshaw.github.io/blog/categories/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="fr"
-                href="https://lyleshaw.com/fr/categories/"
+                href="https://lyleshaw.github.io/blog/fr/categories/"
                 />
   </url>
   
   <url>
-    <loc>https://lyleshaw.com/fr/</loc>
+    <loc>https://lyleshaw.github.io/blog/fr/</loc>
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="https://lyleshaw.com/"
+                href="https://lyleshaw.github.io/blog/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="fr"
-                href="https://lyleshaw.com/fr/"
+                href="https://lyleshaw.github.io/blog/fr/"
                 />
   </url>
   
   <url>
-    <loc>https://lyleshaw.com/fr/series/</loc>
+    <loc>https://lyleshaw.github.io/blog/fr/series/</loc>
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="https://lyleshaw.com/series/"
+                href="https://lyleshaw.github.io/blog/series/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="fr"
-                href="https://lyleshaw.com/fr/series/"
+                href="https://lyleshaw.github.io/blog/fr/series/"
                 />
   </url>
   
   <url>
-    <loc>https://lyleshaw.com/fr/tags/</loc>
+    <loc>https://lyleshaw.github.io/blog/fr/tags/</loc>
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="https://lyleshaw.com/tags/"
+                href="https://lyleshaw.github.io/blog/tags/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="fr"
-                href="https://lyleshaw.com/fr/tags/"
+                href="https://lyleshaw.github.io/blog/fr/tags/"
                 />
   </url>
   

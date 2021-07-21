@@ -2,18 +2,18 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>机器学习 on Lyle&#39;s Blog</title>
-    <link>https://lyleshaw.com/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/</link>
+    <link>https://lyleshaw.github.io/blog/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/</link>
     <description>Recent content in 机器学习 on Lyle&#39;s Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
     <copyright>&lt;a href=&#34;https://creativecommons.org/licenses/by-nc/4.0/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;CC BY-NC 4.0&lt;/a&gt;</copyright>
-    <lastBuildDate>Thu, 24 Sep 2020 18:42:36 +0800</lastBuildDate><atom:link href="https://lyleshaw.com/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Thu, 24 Sep 2020 18:42:36 +0800</lastBuildDate><atom:link href="https://lyleshaw.github.io/blog/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>PyTorch使用指南——pytorch安装</title>
-      <link>https://lyleshaw.com/tech/install-pytorch/</link>
+      <link>https://lyleshaw.github.io/blog/tech/install-pytorch/</link>
       <pubDate>Thu, 24 Sep 2020 18:42:36 +0800</pubDate>
       
-      <guid>https://lyleshaw.com/tech/install-pytorch/</guid>
+      <guid>https://lyleshaw.github.io/blog/tech/install-pytorch/</guid>
       <description>本文首发于https://lyleshaw.com/tech/wechat-bot/
 最近好几个朋友在问pytorch安装的问题，总结了一下，大家好像都是【超时】和【路径】问题，因此在整个系列前些个0篇，介绍pytorch安装中的各种坑
  Q0 一些小问题 有朋友首先问了我这个问题&amp;hellip;这个需要明确一个前提，即pytorch在pip中实际上并不叫pytorch，直接pip install pytorch是会报错的，应该使用官网安装命令完成安装。
@@ -38,10 +38,10 @@ Q3 安装成功却无法import？路径错误 如果您出现内容，您可以�
     
     <item>
       <title>PyTorch使用指南——数据引入</title>
-      <link>https://lyleshaw.com/tech/import-data/</link>
+      <link>https://lyleshaw.github.io/blog/tech/import-data/</link>
       <pubDate>Mon, 17 Aug 2020 22:36:36 +0800</pubDate>
       
-      <guid>https://lyleshaw.com/tech/import-data/</guid>
+      <guid>https://lyleshaw.github.io/blog/tech/import-data/</guid>
       <description>本文首发于https://lyleshaw.com/tech/wechat-bot/
  导入包 首先来一段正常的导入包代码，我将每个包的功能注释到代码后
 import torch # 引入Torch，没啥可说的 import torch.nn as nn # 引入神经网络模块，模型的定义需要用到nn.Model模块 import torch.nn.functional as F # 函数模块，包括机器学习里常用的一些计算函数 import pandas as pd #pandas，用来导入导出数据文件并做一定程度上的清洗 import numpy as np # numpy，python最好的科学计算库，常用在矩阵计算等 from torch.utils.data import * # 这个模块是数据相关的一些操作 from torch.autograd import Variable # variable函数是将tensor转化为可微分的variable类型 import torchvision # 这里面是一些计算机视觉常用的包和函数，一些 import matplotlib.pyplot as plt # plt画图用 import torch.optim as optim # 优化模块，有很多优化器，Adam、SGD等 from torch.utils.data import Dataset # 数据集操作 from torchvision import transforms, datasets, models # transforms是对数据进行totensor，归一化等等操作的包  可以根据不同任务的实际情况选择调用哪些包</description>
@@ -49,10 +49,10 @@ import torch # 引入Torch，没啥可说的 import torch.nn as nn # 引入神�
     
     <item>
       <title>PyTorch使用指南</title>
-      <link>https://lyleshaw.com/tech/pytorch-guide/</link>
+      <link>https://lyleshaw.github.io/blog/tech/pytorch-guide/</link>
       <pubDate>Mon, 17 Aug 2020 22:16:47 +0800</pubDate>
       
-      <guid>https://lyleshaw.com/tech/pytorch-guide/</guid>
+      <guid>https://lyleshaw.github.io/blog/tech/pytorch-guide/</guid>
       <description>本文首发于https://lyleshaw.com/tech/wechat-bot/
  为什么我要写这些？ 这将是一个系列的长文，我希望通过撰写这些文章使得一个对深度学习原理有一定理解的人快速上手pytorch。
 在深度学习建模方面的框架主要为tensorflow和pytorch，前者虽然在前些年占据优势，但是更适合工业级的部署任务，其计算图和仿佛在python里重构了一门新语言的设计非常劝退新手。相比之下，pytorch就更适合入门了。

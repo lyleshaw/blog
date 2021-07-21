@@ -2,18 +2,18 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>技术 on Lyle&#39;s Blog</title>
-    <link>https://lyleshaw.com/tech/</link>
+    <link>https://lyleshaw.github.io/blog/tech/</link>
     <description>Recent content in 技术 on Lyle&#39;s Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
     <copyright>&lt;a href=&#34;https://creativecommons.org/licenses/by-nc/4.0/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;CC BY-NC 4.0&lt;/a&gt;</copyright>
-    <lastBuildDate>Wed, 12 Aug 2020 18:53:07 +0800</lastBuildDate><atom:link href="https://lyleshaw.com/tech/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Wed, 12 Aug 2020 18:53:07 +0800</lastBuildDate><atom:link href="https://lyleshaw.github.io/blog/tech/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>微信机器人踩坑记录</title>
-      <link>https://lyleshaw.com/tech/wechat-bot/</link>
+      <link>https://lyleshaw.github.io/blog/tech/wechat-bot/</link>
       <pubDate>Tue, 20 Oct 2020 14:09:21 +0800</pubDate>
       
-      <guid>https://lyleshaw.com/tech/wechat-bot/</guid>
+      <guid>https://lyleshaw.github.io/blog/tech/wechat-bot/</guid>
       <description>本文首发于https://lyleshaw.com/tech/wechat-bot/
 最近接了个做微信社群运营机器人的单，本来以为很简单框架很多来着，结果没想到断断续续搞了小两个星期，写篇博客记录一下踩坑的记录。
  序 首先我大致了解了一下和微信通讯的方式，主要分以下几种方式：
@@ -40,10 +40,10 @@ hook之一 我最早看到的是这一篇https://zhuanlan.zhihu.com/p/114214846�
     
     <item>
       <title>PyTorch使用指南——pytorch安装</title>
-      <link>https://lyleshaw.com/tech/install-pytorch/</link>
+      <link>https://lyleshaw.github.io/blog/tech/install-pytorch/</link>
       <pubDate>Thu, 24 Sep 2020 18:42:36 +0800</pubDate>
       
-      <guid>https://lyleshaw.com/tech/install-pytorch/</guid>
+      <guid>https://lyleshaw.github.io/blog/tech/install-pytorch/</guid>
       <description>本文首发于https://lyleshaw.com/tech/wechat-bot/
 最近好几个朋友在问pytorch安装的问题，总结了一下，大家好像都是【超时】和【路径】问题，因此在整个系列前些个0篇，介绍pytorch安装中的各种坑
  Q0 一些小问题 有朋友首先问了我这个问题&amp;hellip;这个需要明确一个前提，即pytorch在pip中实际上并不叫pytorch，直接pip install pytorch是会报错的，应该使用官网安装命令完成安装。
@@ -68,10 +68,10 @@ Q3 安装成功却无法import？路径错误 如果您出现内容，您可以�
     
     <item>
       <title>PyTorch使用指南——数据引入</title>
-      <link>https://lyleshaw.com/tech/import-data/</link>
+      <link>https://lyleshaw.github.io/blog/tech/import-data/</link>
       <pubDate>Mon, 17 Aug 2020 22:36:36 +0800</pubDate>
       
-      <guid>https://lyleshaw.com/tech/import-data/</guid>
+      <guid>https://lyleshaw.github.io/blog/tech/import-data/</guid>
       <description>本文首发于https://lyleshaw.com/tech/wechat-bot/
  导入包 首先来一段正常的导入包代码，我将每个包的功能注释到代码后
 import torch # 引入Torch，没啥可说的 import torch.nn as nn # 引入神经网络模块，模型的定义需要用到nn.Model模块 import torch.nn.functional as F # 函数模块，包括机器学习里常用的一些计算函数 import pandas as pd #pandas，用来导入导出数据文件并做一定程度上的清洗 import numpy as np # numpy，python最好的科学计算库，常用在矩阵计算等 from torch.utils.data import * # 这个模块是数据相关的一些操作 from torch.autograd import Variable # variable函数是将tensor转化为可微分的variable类型 import torchvision # 这里面是一些计算机视觉常用的包和函数，一些 import matplotlib.pyplot as plt # plt画图用 import torch.optim as optim # 优化模块，有很多优化器，Adam、SGD等 from torch.utils.data import Dataset # 数据集操作 from torchvision import transforms, datasets, models # transforms是对数据进行totensor，归一化等等操作的包  可以根据不同任务的实际情况选择调用哪些包</description>
@@ -79,10 +79,10 @@ import torch # 引入Torch，没啥可说的 import torch.nn as nn # 引入神�
     
     <item>
       <title>PyTorch使用指南</title>
-      <link>https://lyleshaw.com/tech/pytorch-guide/</link>
+      <link>https://lyleshaw.github.io/blog/tech/pytorch-guide/</link>
       <pubDate>Mon, 17 Aug 2020 22:16:47 +0800</pubDate>
       
-      <guid>https://lyleshaw.com/tech/pytorch-guide/</guid>
+      <guid>https://lyleshaw.github.io/blog/tech/pytorch-guide/</guid>
       <description>本文首发于https://lyleshaw.com/tech/wechat-bot/
  为什么我要写这些？ 这将是一个系列的长文，我希望通过撰写这些文章使得一个对深度学习原理有一定理解的人快速上手pytorch。
 在深度学习建模方面的框架主要为tensorflow和pytorch，前者虽然在前些年占据优势，但是更适合工业级的部署任务，其计算图和仿佛在python里重构了一门新语言的设计非常劝退新手。相比之下，pytorch就更适合入门了。
@@ -94,10 +94,10 @@ import torch # 引入Torch，没啥可说的 import torch.nn as nn # 引入神�
     
     <item>
       <title>2020.08.14-LeetCode刷题总结</title>
-      <link>https://lyleshaw.com/tech/0814-lc/</link>
+      <link>https://lyleshaw.github.io/blog/tech/0814-lc/</link>
       <pubDate>Fri, 14 Aug 2020 21:10:29 +0800</pubDate>
       
-      <guid>https://lyleshaw.com/tech/0814-lc/</guid>
+      <guid>https://lyleshaw.github.io/blog/tech/0814-lc/</guid>
       <description>第一篇刷题总结，内容可能不够完善。
  题目 LeetCode 72题：编辑距离
 给你两个单词 word1 和 word2，请你计算出将 word1 转换成 word2 所使用的最少操作数 。 你可以对一个单词进行如下三种操作： 插入一个字符 删除一个字符 替换一个字符 示例 1： 输入：word1 = &amp;quot;horse&amp;quot;, word2 = &amp;quot;ros&amp;quot; 输出：3 解释： horse -&amp;gt; rorse (将 &#39;h&#39; 替换为 &#39;r&#39;) rorse -&amp;gt; rose (删除 &#39;r&#39;) rose -&amp;gt; ros (删除 &#39;e&#39;) 示例 2： 输入：word1 = &amp;quot;intention&amp;quot;, word2 = &amp;quot;execution&amp;quot; 输出：5 解释： intention -&amp;gt; inention (删除 &#39;t&#39;) inention -&amp;gt; enention (将 &#39;i&#39; 替换为 &#39;e&#39;) enention -&amp;gt; exention (将 &#39;n&#39; 替换为 &#39;x&#39;) exention -&amp;gt; exection (将 &#39;n&#39; 替换为 &#39;c&#39;) exection -&amp;gt; execution (插入 &#39;u&#39;) 思路 这并不是一道非常难的动态规划题。</description>
