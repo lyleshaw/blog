@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="author" content="lyleshaw ">
+<meta name="description" content="本文首发于https://lyleshaw.com/tech/wechat-bot/
+ 导入包 首先来一段正常的导入包代码，我将每个包的功能注释到代码后
+import torch # 引入Torch，没啥可说的 import torch.nn as nn # 引入神经网络模块，模型的定义需要用到nn.Model模块 import torch.nn.functional as F # 函数模块，包括机器学习里常用的一些计算函数 import pandas as pd #pandas，用来导入导出数据文件并做一定程度上的清洗 import numpy as np # numpy，python最好的科学计算库，常用在矩阵计算等 from torch.utils.data import * # 这个模块是数据相关的一些操作 from torch.autograd import Variable # variable函数是将tensor转化为可微分的variable类型 import torchvision # 这里面是一些计算机视觉常用的包和函数，一些 import matplotlib.pyplot as plt # plt画图用 import torch.optim as optim # 优化模块，有很多优化器，Adam、SGD等 from torch.utils.data import Dataset # 数据集操作 from torchvision import transforms, datasets, models # transforms是对数据进行totensor，归一化等等操作的包  可以根据不同任务的实际情况选择调用哪些包" />
+<meta name="keywords" content=", PyTorch, 机器学习" />
+<meta name="robots" content="noodp" />
+<meta name="theme-color" content="#252627" />
+<link rel="canonical" href="https://lyleshaw.com/tech/import-data/" />
+
+
+    <title>
+        
+            PyTorch使用指南——数据引入 : Lyle&#39;s Blog 
+        
+    </title>
+
+
+
+<link href="https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.2.1/css/flag-icon.min.css" rel="stylesheet"
+    type="text/css">
+
+
+
+<link rel="stylesheet" href="https://lyleshaw.com/main.938b46a9abc165937c10db6610d451a8d537ed0977f2543ff126c72da2160501.css">
+
+
+
+
+    <link rel="apple-touch-icon" sizes="180x180" href="https://lyleshaw.com/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="https://lyleshaw.com/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="https://lyleshaw.com/favicon-16x16.png">
+    <link rel="manifest" href="https://lyleshaw.com/site.webmanifest">
+    <link rel="mask-icon" href="https://lyleshaw.com/safari-pinned-tab.svg" color="#252627">
+    <link rel="shortcut icon" href="https://lyleshaw.com/favicon.ico">
+    <meta name="msapplication-TileColor" content="#252627">
+    <meta name="theme-color" content="#252627">
+
+
+
+<meta itemprop="name" content="PyTorch使用指南——数据引入">
+<meta itemprop="description" content="本文首发于https://lyleshaw.com/tech/wechat-bot/
+ 导入包 首先来一段正常的导入包代码，我将每个包的功能注释到代码后
+import torch # 引入Torch，没啥可说的 import torch.nn as nn # 引入神经网络模块，模型的定义需要用到nn.Model模块 import torch.nn.functional as F # 函数模块，包括机器学习里常用的一些计算函数 import pandas as pd #pandas，用来导入导出数据文件并做一定程度上的清洗 import numpy as np # numpy，python最好的科学计算库，常用在矩阵计算等 from torch.utils.data import * # 这个模块是数据相关的一些操作 from torch.autograd import Variable # variable函数是将tensor转化为可微分的variable类型 import torchvision # 这里面是一些计算机视觉常用的包和函数，一些 import matplotlib.pyplot as plt # plt画图用 import torch.optim as optim # 优化模块，有很多优化器，Adam、SGD等 from torch.utils.data import Dataset # 数据集操作 from torchvision import transforms, datasets, models # transforms是对数据进行totensor，归一化等等操作的包  可以根据不同任务的实际情况选择调用哪些包">
+<meta itemprop="datePublished" content="2020-08-17T22:36:36+08:00" />
+<meta itemprop="dateModified" content="2020-08-17T22:36:36+08:00" />
+<meta itemprop="wordCount" content="182">
+<meta itemprop="image" content="https://lyleshaw.com"/>
+
+
+
+<meta itemprop="keywords" content="PyTorch,机器学习," />
+
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:image" content="https://lyleshaw.com"/>
+
+<meta name="twitter:title" content="PyTorch使用指南——数据引入"/>
+<meta name="twitter:description" content="本文首发于https://lyleshaw.com/tech/wechat-bot/
+ 导入包 首先来一段正常的导入包代码，我将每个包的功能注释到代码后
+import torch # 引入Torch，没啥可说的 import torch.nn as nn # 引入神经网络模块，模型的定义需要用到nn.Model模块 import torch.nn.functional as F # 函数模块，包括机器学习里常用的一些计算函数 import pandas as pd #pandas，用来导入导出数据文件并做一定程度上的清洗 import numpy as np # numpy，python最好的科学计算库，常用在矩阵计算等 from torch.utils.data import * # 这个模块是数据相关的一些操作 from torch.autograd import Variable # variable函数是将tensor转化为可微分的variable类型 import torchvision # 这里面是一些计算机视觉常用的包和函数，一些 import matplotlib.pyplot as plt # plt画图用 import torch.optim as optim # 优化模块，有很多优化器，Adam、SGD等 from torch.utils.data import Dataset # 数据集操作 from torchvision import transforms, datasets, models # transforms是对数据进行totensor，归一化等等操作的包  可以根据不同任务的实际情况选择调用哪些包"/>
+
+
+
+    <meta property="og:title" content="PyTorch使用指南——数据引入" />
+<meta property="og:description" content="本文首发于https://lyleshaw.com/tech/wechat-bot/
+ 导入包 首先来一段正常的导入包代码，我将每个包的功能注释到代码后
+import torch # 引入Torch，没啥可说的 import torch.nn as nn # 引入神经网络模块，模型的定义需要用到nn.Model模块 import torch.nn.functional as F # 函数模块，包括机器学习里常用的一些计算函数 import pandas as pd #pandas，用来导入导出数据文件并做一定程度上的清洗 import numpy as np # numpy，python最好的科学计算库，常用在矩阵计算等 from torch.utils.data import * # 这个模块是数据相关的一些操作 from torch.autograd import Variable # variable函数是将tensor转化为可微分的variable类型 import torchvision # 这里面是一些计算机视觉常用的包和函数，一些 import matplotlib.pyplot as plt # plt画图用 import torch.optim as optim # 优化模块，有很多优化器，Adam、SGD等 from torch.utils.data import Dataset # 数据集操作 from torchvision import transforms, datasets, models # transforms是对数据进行totensor，归一化等等操作的包  可以根据不同任务的实际情况选择调用哪些包" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://lyleshaw.com/tech/import-data/" />
+<meta property="og:image" content="https://lyleshaw.com"/>
+<meta property="article:published_time" content="2020-08-17T22:36:36+08:00" />
+<meta property="article:modified_time" content="2020-08-17T22:36:36+08:00" />
+
+
+
+
+
+
+    <meta property="article:published_time" content="2020-08-17 22:36:36 &#43;0800 &#43;0800" />
+
+
+
+
+
+
+
+
+    </head>
+
+    <body class="">
+        <div class="container">
+            <header class="header">
+    <span class="header__inner">
+        <a href="https://lyleshaw.com/" style="text-decoration: none;">
+    <div class="logo">
+        
+            <span class="logo__mark">></span>
+            <span class="logo__text">$ cd /home/</span>
+            <span class="logo__cursor" style=
+                  "
+                   
+                   ">
+            </span>
+        
+    </div>
+</a>
+
+
+        <span class="header__right">
+            
+                <nav class="menu">
+    <ul class="menu__inner"><li><a href="https://lyleshaw.com/about">关于</a></li><li><a href="https://lyleshaw.com/friends-links/">友链</a></li><li><a href="https://lyleshaw.com/tech/">技术</a></li><li><a href="https://lyleshaw.com/life/">日常</a></li><li><a href="https://lyleshaw.com/tags/">标签</a></li>
+    </ul>
+</nav>
+
+                <span class="menu-trigger">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                        <path d="M0 0h24v24H0z" fill="none"/>
+                        <path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z"/>
+                    </svg>
+                </span>
+            
+
+            <span class="theme-toggle unselectable"><svg class="theme-toggler" width="24" height="24" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <path d="M22 41C32.4934 41 41 32.4934 41 22C41 11.5066 32.4934 3 22
+  3C11.5066 3 3 11.5066 3 22C3 32.4934 11.5066 41 22 41ZM7 22C7
+  13.7157 13.7157 7 22 7V37C13.7157 37 7 30.2843 7 22Z"/>
+</svg>
+</span>
+        </span>
+    </span>
+</header>
+
+
+            <div class="content">
+                
+    <main class="post">
+
+        <div class="post-info">
+            
+            </p>
+        </div>
+
+        <article>
+            <h2 class="post-title"><a href="https://lyleshaw.com/tech/import-data/">PyTorch使用指南——数据引入</a></h2>
+
+            
+
+            <div class="post-content">
+                <blockquote>
+<p><em><strong>本文首发于<a href="https://lyleshaw.com/tech/wechat-bot/">https://lyleshaw.com/tech/wechat-bot/</a></strong></em></p>
+</blockquote>
+<h2 id="导入包">导入包</h2>
+<p>首先来一段正常的导入包代码，我将每个包的功能注释到代码后</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#f92672">import</span> torch <span style="color:#75715e"># 引入Torch，没啥可说的</span>
+<span style="color:#f92672">import</span> torch.nn <span style="color:#f92672">as</span> nn <span style="color:#75715e"># 引入神经网络模块，模型的定义需要用到nn.Model模块</span>
+<span style="color:#f92672">import</span> torch.nn.functional <span style="color:#f92672">as</span> F <span style="color:#75715e"># 函数模块，包括机器学习里常用的一些计算函数</span>
+<span style="color:#f92672">import</span> pandas <span style="color:#f92672">as</span> pd <span style="color:#75715e">#pandas，用来导入导出数据文件并做一定程度上的清洗</span>
+<span style="color:#f92672">import</span> numpy <span style="color:#f92672">as</span> np <span style="color:#75715e"># numpy，python最好的科学计算库，常用在矩阵计算等</span>
+<span style="color:#f92672">from</span> torch.utils.data <span style="color:#f92672">import</span> <span style="color:#f92672">*</span> <span style="color:#75715e"># 这个模块是数据相关的一些操作</span>
+<span style="color:#f92672">from</span> torch.autograd <span style="color:#f92672">import</span> Variable <span style="color:#75715e"># variable函数是将tensor转化为可微分的variable类型</span>
+<span style="color:#f92672">import</span> torchvision <span style="color:#75715e"># 这里面是一些计算机视觉常用的包和函数，一些</span>
+<span style="color:#f92672">import</span> matplotlib.pyplot <span style="color:#f92672">as</span> plt <span style="color:#75715e"># plt画图用</span>
+<span style="color:#f92672">import</span> torch.optim <span style="color:#f92672">as</span> optim <span style="color:#75715e"># 优化模块，有很多优化器，Adam、SGD等</span>
+<span style="color:#f92672">from</span> torch.utils.data <span style="color:#f92672">import</span> Dataset <span style="color:#75715e"># 数据集操作</span>
+<span style="color:#f92672">from</span> torchvision <span style="color:#f92672">import</span> transforms, datasets, models <span style="color:#75715e"># transforms是对数据进行totensor，归一化等等操作的包</span>
+</code></pre></div><blockquote>
+<p>可以根据不同任务的实际情况选择调用哪些包</p>
+</blockquote>
+<h2 id="数据导入">数据导入</h2>
+<p>大部分网上关于pytorch的入门教程都是从mnist开始的，通常数据引入部分就是如下的代码</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">train_loader <span style="color:#f92672">=</span> torch<span style="color:#f92672">.</span>utils<span style="color:#f92672">.</span>data<span style="color:#f92672">.</span>DataLoader(
+    datasets<span style="color:#f92672">.</span>MNIST(<span style="color:#e6db74">&#39;../data&#39;</span>, train<span style="color:#f92672">=</span>True, download<span style="color:#f92672">=</span>True,
+                   transform<span style="color:#f92672">=</span>transforms<span style="color:#f92672">.</span>Compose([
+                       transforms<span style="color:#f92672">.</span>ToTensor(),
+                       transforms<span style="color:#f92672">.</span>Normalize((<span style="color:#ae81ff">0.1307</span>,), (<span style="color:#ae81ff">0.3081</span>,))
+                   ])),
+    batch_size<span style="color:#f92672">=</span><span style="color:#ae81ff">32</span>, shuffle<span style="color:#f92672">=</span>True)
+</code></pre></div><p>仅仅通过datasets里的MNIST就直接引入了手写字体的数据，虽然说用起来很方便，但是我想<strong>大家应该不会只希望于用pytorch固定好的数据</strong>，而更希望可以自定义数据进行训练和预测。</p>
+<p>这时就需要用到如下代码（截取自某次任务）：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">tr_data <span style="color:#f92672">=</span> pd<span style="color:#f92672">.</span>read_csv(<span style="color:#e6db74">&#34;./data/train/outfile5.csv&#34;</span>,encoding<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;gbk&#39;</span>)
+train <span style="color:#f92672">=</span> pd<span style="color:#f92672">.</span>read_csv(<span style="color:#e6db74">&#39;./data/train/outfile5.csv&#39;</span>,usecols<span style="color:#f92672">=</span>[<span style="color:#ae81ff">1</span>,<span style="color:#ae81ff">2</span>],encoding<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;gbk&#39;</span>)
+train_label <span style="color:#f92672">=</span> pd<span style="color:#f92672">.</span>read_csv(<span style="color:#e6db74">&#39;./data/train/outfile5.csv&#39;</span>,usecols<span style="color:#f92672">=</span>[<span style="color:#ae81ff">29</span>],encoding<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;gbk&#39;</span>)
+
+te_data <span style="color:#f92672">=</span> pd<span style="color:#f92672">.</span>read_csv(<span style="color:#e6db74">&#34;./data/val/lval.csv&#34;</span>,encoding<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;gbk&#39;</span>)
+test <span style="color:#f92672">=</span> pd<span style="color:#f92672">.</span>read_csv(<span style="color:#e6db74">&#39;./data/val/lval.csv&#39;</span>,usecols<span style="color:#f92672">=</span>[<span style="color:#ae81ff">1</span>,<span style="color:#ae81ff">2</span>],encoding<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;gbk&#39;</span>)
+test_label <span style="color:#f92672">=</span> pd<span style="color:#f92672">.</span>read_csv(<span style="color:#e6db74">&#39;./data/val/lval.csv&#39;</span>,usecols<span style="color:#f92672">=</span>[<span style="color:#ae81ff">29</span>],encoding<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;gbk&#39;</span>)
+
+train_tensor <span style="color:#f92672">=</span> torch<span style="color:#f92672">.</span>Tensor(train<span style="color:#f92672">.</span>values)
+train_label_tensor <span style="color:#f92672">=</span> torch<span style="color:#f92672">.</span>Tensor(train_label<span style="color:#f92672">.</span>values)
+test_tensor <span style="color:#f92672">=</span> torch<span style="color:#f92672">.</span>Tensor(test<span style="color:#f92672">.</span>values)
+test_label_tensor <span style="color:#f92672">=</span> torch<span style="color:#f92672">.</span>Tensor(test_label<span style="color:#f92672">.</span>values)
+
+train_set <span style="color:#f92672">=</span> TensorDataset(train_tensor,train_label_tensor)
+train_data <span style="color:#f92672">=</span> torch<span style="color:#f92672">.</span>utils<span style="color:#f92672">.</span>data<span style="color:#f92672">.</span>DataLoader(train_set, batch_size<span style="color:#f92672">=</span>batchsize,shuffle<span style="color:#f92672">=</span>True)
+test_set <span style="color:#f92672">=</span> TensorDataset(test_tensor,test_label_tensor)
+test_data <span style="color:#f92672">=</span> torch<span style="color:#f92672">.</span>utils<span style="color:#f92672">.</span>data<span style="color:#f92672">.</span>DataLoader(test_set, batch_size<span style="color:#f92672">=</span>batchsize,shuffle<span style="color:#f92672">=</span>True)
+</code></pre></div><p>介绍一下，首先通过pandas里的read_csv函数将csv表格文件转换为dataframe（pandas的数据格式），存储在tr_data等变量中。</p>
+<p>而后利用Tensor函数将其转换为tensor类型的数据，然后通过TensorDataset将数据和标签一起转换为dataset类型，最终使用DataLoader函数（经过各种变化）成为可以被训练的数据。</p>
+<p>而对于图像类的数据，可以直接使用ImageFolder函数通过文件夹的方式分类读取，只要满足如下目录格式</p>
+<pre><code>train_data/
+··········/label_1
+··················/1.jpg
+··················/2.jpg
+··········/label_2
+··················/3.jpg
+··················/4.jpg
+</code></pre><p>则读取的1.jpg 2.jpg的标签为label_1，读取的3.jpg 4.jpg的标签为label_2</p>
+<p>以下为代码示例</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">data_transform <span style="color:#f92672">=</span> transforms<span style="color:#f92672">.</span>Compose([transforms<span style="color:#f92672">.</span>RandomResizedCrop(<span style="color:#ae81ff">224</span>),transforms<span style="color:#f92672">.</span>RandomHorizontalFlip(),transforms<span style="color:#f92672">.</span>ToTensor(),transforms<span style="color:#f92672">.</span>Normalize((<span style="color:#ae81ff">0.5</span>,<span style="color:#ae81ff">0.5</span>,<span style="color:#ae81ff">0.5</span>),(<span style="color:#ae81ff">0.5</span>,<span style="color:#ae81ff">0.5</span>,<span style="color:#ae81ff">0.5</span>))])
+
+train_img <span style="color:#f92672">=</span> torchvision<span style="color:#f92672">.</span>datasets<span style="color:#f92672">.</span>ImageFolder(<span style="color:#e6db74">&#39;data/train&#39;</span>,
+                                            transform<span style="color:#f92672">=</span>data_transform
+                                            )
+test_img <span style="color:#f92672">=</span> torchvision<span style="color:#f92672">.</span>datasets<span style="color:#f92672">.</span>ImageFolder(<span style="color:#e6db74">&#39;data/val&#39;</span>,
+                                            transform<span style="color:#f92672">=</span>data_transform
+                                            )
+
+train_data <span style="color:#f92672">=</span> torch<span style="color:#f92672">.</span>utils<span style="color:#f92672">.</span>data<span style="color:#f92672">.</span>DataLoader(train_img, batch_size<span style="color:#f92672">=</span><span style="color:#ae81ff">4</span>,shuffle<span style="color:#f92672">=</span>True)
+test_data <span style="color:#f92672">=</span> torch<span style="color:#f92672">.</span>utils<span style="color:#f92672">.</span>data<span style="color:#f92672">.</span>DataLoader(test_img, batch_size<span style="color:#f92672">=</span><span style="color:#ae81ff">4</span>,shuffle<span style="color:#f92672">=</span>True)
+</code></pre></div><p>当然，也可以通过继承ImageFolder类自定义图片读取方式。</p>
+<p>总之，数据格式经历了如下变化：</p>
+<blockquote>
+<p>csv → dataframe → tensor → dataset → dataloader → (variable)[以后会讲]</p>
+</blockquote>
+
+            </div>
+
+            <div id="comments" class="thin">
+                <script src='//unpkg.com/valine/dist/Valine.min.js'></script>
+                <div id="vcomments"></div>
+        <script>
+            new Valine({
+                el: '#vcomments',
+                appId: 'DOmYnb7Gz1u6y9cIVbbGJ6wv-gzGzoHsz',
+                appKey: 'sdy2Fpy2N3Pw9t7nhFxtv1B6'
+            })
+        </script>
+
+
+        </article>
+
+        <hr />
+
+        <div class="post-info">
+  				<p>
+  					<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-tag meta-icon"><path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"></path><line x1="7" y1="7" x2="7" y2="7"></line></svg><span class="tag"><a href="https://lyleshaw.com/tags/pytorch">PyTorch</a></span><span class="tag"><a href="https://lyleshaw.com/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0">机器学习</a></span>
+  				</p>
+  		</div>
+    </main>
+
+            </div>
+
+            
+                <footer class="footer">
+    <div class="footer__inner">
+
+        
+        <script>
+			var _hmt = _hmt || [];
+			(function() {
+			  var hm = document.createElement("script");
+			  hm.src = "https://hm.baidu.com/hm.js?ea20553a4ab575086416a5bfe37b3f3e";
+			  var s = document.getElementsByTagName("script")[0]; 
+			  s.parentNode.insertBefore(hm, s);
+			})();
+            </script>
+            
+            
+        <div class="footer__content">
+            <span>&copy; 2021</span>
+            
+                <span><a href="https://lyleshaw.com">lyleshaw</a></span>
+            
+            
+                <span><a href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank" rel="noopener">CC BY-NC 4.0</a></span>
+            
+            <span> <a href="https://lyleshaw.com/posts/index.xml" target="_blank" title="rss"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-rss"><path d="M4 11a9 9 0 0 1 9 9"></path><path d="M4 4a16 16 0 0 1 16 16"></path><circle cx="5" cy="19" r="1"></circle></svg></a></span>
+        </div>
+    </div>
+    <p><a href="http://www.beian.miit.gov.cn/" target="_blank" rel="noopener" one-link-mark="yes">豫ICP备·19030768号</a></p>
+    <div class="footer__inner">
+        <div class="footer__content">
+            <span>Powered by <a href="http://gohugo.io">Hugo</a></span>
+            <span>Made by <a href="https://github.com/rhazdon">Djordje Atlialp</a></span>
+        </div>
+    </div>
+</footer>
+
+            
+        </div>
+
+        
+
+
+
+
+<script type="text/javascript" src="https://lyleshaw.com/bundle.min.dc716e9092c9820b77f96da294d0120aeeb189b5bcea9752309ebea27fd53bbe6b13cffb2aca8ecf32525647ceb7001f76091de4199ac5a3caa432c070247f5b.js" integrity="sha512-3HFukJLJggt3&#43;W2ilNASCu6xibW86pdSMJ6&#43;on/VO75rE8/7KsqOzzJSVkfOtwAfdgkd5BmaxaPKpDLAcCR/Ww=="></script>
+
+
+
+    </body>
+</html>

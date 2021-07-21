@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>生活琐事 on Lyle&#39;s Blog</title>
+    <link>https://lyleshaw.com/tags/%E7%94%9F%E6%B4%BB%E7%90%90%E4%BA%8B/</link>
+    <description>Recent content in 生活琐事 on Lyle&#39;s Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-CN</language>
+    <copyright>&lt;a href=&#34;https://creativecommons.org/licenses/by-nc/4.0/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;CC BY-NC 4.0&lt;/a&gt;</copyright>
+    <lastBuildDate>Wed, 19 Aug 2020 23:00:23 +0800</lastBuildDate><atom:link href="https://lyleshaw.com/tags/%E7%94%9F%E6%B4%BB%E7%90%90%E4%BA%8B/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>世界观之——和C的聊天记录</title>
+      <link>https://lyleshaw.com/life/worldview1/</link>
+      <pubDate>Wed, 19 Aug 2020 23:00:23 +0800</pubDate>
+      
+      <guid>https://lyleshaw.com/life/worldview1/</guid>
+      <description> 因为某C朋友的好奇，聊了聊关于我的世界观，因见识与阅历存在疏漏，如有见解还望指出。截图已获对方允许。
+ </description>
+    </item>
+    
+    <item>
+      <title>为什么我需要一个博客</title>
+      <link>https://lyleshaw.com/life/why-we-need-blogs/</link>
+      <pubDate>Wed, 12 Aug 2020 18:53:19 +0800</pubDate>
+      
+      <guid>https://lyleshaw.com/life/why-we-need-blogs/</guid>
+      <description>历史 最早接触建站是在2013年，当时还是初二的我斥巨资（就当时而言）买入了一个域名ycwl.pw，然后在此基础上折腾过一段时间的discuz和wordpress，甚至还帮其他人做过一些小网页赚过十几块钱。
+然而当时无非是在html模版的基础上改些小地方，还记得当时那简陋的dreamwear，并没有深入去学JavaScript或PHP，期间多次想坚持写个blog，可似乎最长的一次也不过坚持了一两个月便放弃了，甚至现在连数据都丢失掉了。
+大学之后，觉得闲置lyleshaw.com这个域名有些浪费，因此又重新用wordpress建了个blog，但是时隔半年却一篇产出都没有&amp;hellip;
+再然后，便是现在使用hugo搭建的静态博客了。
+缘由 blog本身即是作为一个表达自己看法的工具，在这一点上与知乎专栏和简书等并没有本质的区别。
+而由于众所周知的国内审查环境，加之国内大部分互联网社区氛围都比较“下沉”，因此博客就成为了互联网（技术）圈的一个交流社区。
+假若你对JavaScript、php都毫无了解，依然可以通过wordpress搭建自己的blog，而倘若你学习了一点点html和css，就可以依照自己的想法对theme进行定制，如若再进一层，学习了Git，便可以通过hexo与hugo等静态页面托管到github pages作为自己的blog。
+blog的定位也很独特，你不会寄希望于自己的blog拥有与微信公众号、今日头条等平台同等规模的阅读+评论，但是也不会希望自己的blog只成为自己一个人的乐土。通过blog，你可以大概率的避免类似微博、今日头条等文章下的低智评论，又可以获得小圈子范围内的认可。
+关于我的blog 几乎每一个建立blog的人都会希望它成为一个纯技术类的blog，但显然大部分并不能做到天天对着代码看的同时，晚上继续孜孜不倦的写技术文章，因此，生活将成为一个blog很重要的部分。
+而我的blog也同样如此，我会偶尔将一些关于技术上的（不成熟的）思考写作文档放上来，同样也会将自身的一些计划&amp;amp;想法&amp;amp;经历放上。对此，我将放弃自己平时对待大部分事情尽可能希望保持中立且公正的态度，而是会加入自身的想法[若非如此，文章大概都会变成复读机了（笑）]。
+同时，我欢迎各位有想法的小伙伴与我交流。然而，由于众所周知的原因，disqus在国内的稳定性并不好（并且消息推送也不及时），因此我将暂时不开放评论系统，想要交流的小伙伴可以直接向我发送邮件x@lyleshaw.com.
+以上。</description>
+    </item>
+    
+  </channel>
+</rss>

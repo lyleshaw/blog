@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="author" content="lyleshaw ">
+<meta name="description" content="本文首发于https://lyleshaw.com/tech/wechat-bot/
+最近好几个朋友在问pytorch安装的问题，总结了一下，大家好像都是【超时】和【路径】问题，因此在整个系列前些个0篇，介绍pytorch安装中的各种坑
+ Q0 一些小问题 有朋友首先问了我这个问题&amp;hellip;这个需要明确一个前提，即pytorch在pip中实际上并不叫pytorch，直接pip install pytorch是会报错的，应该使用官网安装命令完成安装。
+Q1 超时——如何使用pip/conda镜像 其次常见的问题应该是time out，即超时错误。这是由于Torch仓库在海外，访问外网的速度会有所限制，而连接超过设定时间后即会自动终止安装，这时候就需要通过国内镜像来完成安装。
+以下提供部分常用镜像地址
+清华：https://pypi.tuna.tsinghua.edu.cn/simple 阿里云：http://mirrors.aliyun.com/pypi/simple/ 中国科技大学 https://pypi.mirrors.ustc.edu.cn/simple/ 豆瓣：http://pypi.douban.com/simple/ 通过我们会使用清华源或阿里源
+如果您不经常使用python，仅仅为了任务而使用pytorch，那么我建议您在该次安装中使用暂时的镜像，命令为
+pip install -i https://pypi.tuna.tsinghua.edu.cn/simple {Your Pack&#39;s Name} 对于Torch安装而言，则为
+pip install -i https://pypi.tuna.tsinghua.edu.cn/simple torch==1.6.0&#43;cpu torchvision==0.7.0&#43;cpu -f https://download.pytorch.org/whl/torch_stable.html 倘若您会经常使用python，那么我建议您直接将pip安装来源永久修改为清华源，方法如下：
+首先找到如下路径，{Your User Name}为您的用户名：
+C:\User\{Your User Name}\pip\pip.ini 其次修改pip.ini的内容为如下内容：
+[global] index-url = https://pypi.tuna.tsinghua.edu.cn/simple [install] trusted-host=mirrors.aliyun.com 一般而言，通过如上方法即可成功。
+Q2 安装失败？试试CPU版 如果上述安装过程出现如下错误
+那么应该是您默认安装了CUDA版本，即GPU版本
+这种情况下建议您安装CPU版本，即把下图中CUDA版本选择为“None”后的命令进行安装
+Q3 安装成功却无法import？路径错误 如果您出现内容，您可以直接在CMD中输入python后打出import torch内容后没有报错，那么恭喜您，pytorch已经成功安装到了您的电脑。
+但是不要着急，这并不意味着您可以将pytorch在生产环境中使用。
+如图：这可能是由于您安装了多个python环境（包括但不限于原生python，anaconda等），就可能会产生将Torch安装到自己也不知道哪个环境的情况，结果即如上图。
+此时有三个解决方案：
+1. 卸载所有环境，只保留一个环境（建议anaconda）【简单】 2. 在所有环境中全部安装一遍Torch【中等】 3. 手动调整系统环境变量中的路径，将Torch安装到自己需要的环境中【较难】  以上即是安装pytorch中的常见问题，如果有其他问题可以向我发邮件，我会在看到后回复~" />
+<meta name="keywords" content=", PyTorch, 机器学习" />
+<meta name="robots" content="noodp" />
+<meta name="theme-color" content="#252627" />
+<link rel="canonical" href="https://lyleshaw.com/tech/install-pytorch/" />
+
+
+    <title>
+        
+            PyTorch使用指南——pytorch安装 : Lyle&#39;s Blog 
+        
+    </title>
+
+
+
+<link href="https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.2.1/css/flag-icon.min.css" rel="stylesheet"
+    type="text/css">
+
+
+
+<link rel="stylesheet" href="https://lyleshaw.com/main.938b46a9abc165937c10db6610d451a8d537ed0977f2543ff126c72da2160501.css">
+
+
+
+
+    <link rel="apple-touch-icon" sizes="180x180" href="https://lyleshaw.com/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="https://lyleshaw.com/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="https://lyleshaw.com/favicon-16x16.png">
+    <link rel="manifest" href="https://lyleshaw.com/site.webmanifest">
+    <link rel="mask-icon" href="https://lyleshaw.com/safari-pinned-tab.svg" color="#252627">
+    <link rel="shortcut icon" href="https://lyleshaw.com/favicon.ico">
+    <meta name="msapplication-TileColor" content="#252627">
+    <meta name="theme-color" content="#252627">
+
+
+
+<meta itemprop="name" content="PyTorch使用指南——pytorch安装">
+<meta itemprop="description" content="本文首发于https://lyleshaw.com/tech/wechat-bot/
+最近好几个朋友在问pytorch安装的问题，总结了一下，大家好像都是【超时】和【路径】问题，因此在整个系列前些个0篇，介绍pytorch安装中的各种坑
+ Q0 一些小问题 有朋友首先问了我这个问题&hellip;这个需要明确一个前提，即pytorch在pip中实际上并不叫pytorch，直接pip install pytorch是会报错的，应该使用官网安装命令完成安装。
+Q1 超时——如何使用pip/conda镜像 其次常见的问题应该是time out，即超时错误。这是由于Torch仓库在海外，访问外网的速度会有所限制，而连接超过设定时间后即会自动终止安装，这时候就需要通过国内镜像来完成安装。
+以下提供部分常用镜像地址
+清华：https://pypi.tuna.tsinghua.edu.cn/simple 阿里云：http://mirrors.aliyun.com/pypi/simple/ 中国科技大学 https://pypi.mirrors.ustc.edu.cn/simple/ 豆瓣：http://pypi.douban.com/simple/ 通过我们会使用清华源或阿里源
+如果您不经常使用python，仅仅为了任务而使用pytorch，那么我建议您在该次安装中使用暂时的镜像，命令为
+pip install -i https://pypi.tuna.tsinghua.edu.cn/simple {Your Pack&#39;s Name} 对于Torch安装而言，则为
+pip install -i https://pypi.tuna.tsinghua.edu.cn/simple torch==1.6.0&#43;cpu torchvision==0.7.0&#43;cpu -f https://download.pytorch.org/whl/torch_stable.html 倘若您会经常使用python，那么我建议您直接将pip安装来源永久修改为清华源，方法如下：
+首先找到如下路径，{Your User Name}为您的用户名：
+C:\User\{Your User Name}\pip\pip.ini 其次修改pip.ini的内容为如下内容：
+[global] index-url = https://pypi.tuna.tsinghua.edu.cn/simple [install] trusted-host=mirrors.aliyun.com 一般而言，通过如上方法即可成功。
+Q2 安装失败？试试CPU版 如果上述安装过程出现如下错误
+那么应该是您默认安装了CUDA版本，即GPU版本
+这种情况下建议您安装CPU版本，即把下图中CUDA版本选择为“None”后的命令进行安装
+Q3 安装成功却无法import？路径错误 如果您出现内容，您可以直接在CMD中输入python后打出import torch内容后没有报错，那么恭喜您，pytorch已经成功安装到了您的电脑。
+但是不要着急，这并不意味着您可以将pytorch在生产环境中使用。
+如图：这可能是由于您安装了多个python环境（包括但不限于原生python，anaconda等），就可能会产生将Torch安装到自己也不知道哪个环境的情况，结果即如上图。
+此时有三个解决方案：
+1. 卸载所有环境，只保留一个环境（建议anaconda）【简单】 2. 在所有环境中全部安装一遍Torch【中等】 3. 手动调整系统环境变量中的路径，将Torch安装到自己需要的环境中【较难】  以上即是安装pytorch中的常见问题，如果有其他问题可以向我发邮件，我会在看到后回复~">
+<meta itemprop="datePublished" content="2020-09-24T18:42:36+08:00" />
+<meta itemprop="dateModified" content="2020-09-24T18:42:36+08:00" />
+<meta itemprop="wordCount" content="69">
+<meta itemprop="image" content="https://lyleshaw.com"/>
+
+
+
+<meta itemprop="keywords" content="PyTorch,机器学习," />
+
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:image" content="https://lyleshaw.com"/>
+
+<meta name="twitter:title" content="PyTorch使用指南——pytorch安装"/>
+<meta name="twitter:description" content="本文首发于https://lyleshaw.com/tech/wechat-bot/
+最近好几个朋友在问pytorch安装的问题，总结了一下，大家好像都是【超时】和【路径】问题，因此在整个系列前些个0篇，介绍pytorch安装中的各种坑
+ Q0 一些小问题 有朋友首先问了我这个问题&hellip;这个需要明确一个前提，即pytorch在pip中实际上并不叫pytorch，直接pip install pytorch是会报错的，应该使用官网安装命令完成安装。
+Q1 超时——如何使用pip/conda镜像 其次常见的问题应该是time out，即超时错误。这是由于Torch仓库在海外，访问外网的速度会有所限制，而连接超过设定时间后即会自动终止安装，这时候就需要通过国内镜像来完成安装。
+以下提供部分常用镜像地址
+清华：https://pypi.tuna.tsinghua.edu.cn/simple 阿里云：http://mirrors.aliyun.com/pypi/simple/ 中国科技大学 https://pypi.mirrors.ustc.edu.cn/simple/ 豆瓣：http://pypi.douban.com/simple/ 通过我们会使用清华源或阿里源
+如果您不经常使用python，仅仅为了任务而使用pytorch，那么我建议您在该次安装中使用暂时的镜像，命令为
+pip install -i https://pypi.tuna.tsinghua.edu.cn/simple {Your Pack&#39;s Name} 对于Torch安装而言，则为
+pip install -i https://pypi.tuna.tsinghua.edu.cn/simple torch==1.6.0&#43;cpu torchvision==0.7.0&#43;cpu -f https://download.pytorch.org/whl/torch_stable.html 倘若您会经常使用python，那么我建议您直接将pip安装来源永久修改为清华源，方法如下：
+首先找到如下路径，{Your User Name}为您的用户名：
+C:\User\{Your User Name}\pip\pip.ini 其次修改pip.ini的内容为如下内容：
+[global] index-url = https://pypi.tuna.tsinghua.edu.cn/simple [install] trusted-host=mirrors.aliyun.com 一般而言，通过如上方法即可成功。
+Q2 安装失败？试试CPU版 如果上述安装过程出现如下错误
+那么应该是您默认安装了CUDA版本，即GPU版本
+这种情况下建议您安装CPU版本，即把下图中CUDA版本选择为“None”后的命令进行安装
+Q3 安装成功却无法import？路径错误 如果您出现内容，您可以直接在CMD中输入python后打出import torch内容后没有报错，那么恭喜您，pytorch已经成功安装到了您的电脑。
+但是不要着急，这并不意味着您可以将pytorch在生产环境中使用。
+如图：这可能是由于您安装了多个python环境（包括但不限于原生python，anaconda等），就可能会产生将Torch安装到自己也不知道哪个环境的情况，结果即如上图。
+此时有三个解决方案：
+1. 卸载所有环境，只保留一个环境（建议anaconda）【简单】 2. 在所有环境中全部安装一遍Torch【中等】 3. 手动调整系统环境变量中的路径，将Torch安装到自己需要的环境中【较难】  以上即是安装pytorch中的常见问题，如果有其他问题可以向我发邮件，我会在看到后回复~"/>
+
+
+
+    <meta property="og:title" content="PyTorch使用指南——pytorch安装" />
+<meta property="og:description" content="本文首发于https://lyleshaw.com/tech/wechat-bot/
+最近好几个朋友在问pytorch安装的问题，总结了一下，大家好像都是【超时】和【路径】问题，因此在整个系列前些个0篇，介绍pytorch安装中的各种坑
+ Q0 一些小问题 有朋友首先问了我这个问题&hellip;这个需要明确一个前提，即pytorch在pip中实际上并不叫pytorch，直接pip install pytorch是会报错的，应该使用官网安装命令完成安装。
+Q1 超时——如何使用pip/conda镜像 其次常见的问题应该是time out，即超时错误。这是由于Torch仓库在海外，访问外网的速度会有所限制，而连接超过设定时间后即会自动终止安装，这时候就需要通过国内镜像来完成安装。
+以下提供部分常用镜像地址
+清华：https://pypi.tuna.tsinghua.edu.cn/simple 阿里云：http://mirrors.aliyun.com/pypi/simple/ 中国科技大学 https://pypi.mirrors.ustc.edu.cn/simple/ 豆瓣：http://pypi.douban.com/simple/ 通过我们会使用清华源或阿里源
+如果您不经常使用python，仅仅为了任务而使用pytorch，那么我建议您在该次安装中使用暂时的镜像，命令为
+pip install -i https://pypi.tuna.tsinghua.edu.cn/simple {Your Pack&#39;s Name} 对于Torch安装而言，则为
+pip install -i https://pypi.tuna.tsinghua.edu.cn/simple torch==1.6.0&#43;cpu torchvision==0.7.0&#43;cpu -f https://download.pytorch.org/whl/torch_stable.html 倘若您会经常使用python，那么我建议您直接将pip安装来源永久修改为清华源，方法如下：
+首先找到如下路径，{Your User Name}为您的用户名：
+C:\User\{Your User Name}\pip\pip.ini 其次修改pip.ini的内容为如下内容：
+[global] index-url = https://pypi.tuna.tsinghua.edu.cn/simple [install] trusted-host=mirrors.aliyun.com 一般而言，通过如上方法即可成功。
+Q2 安装失败？试试CPU版 如果上述安装过程出现如下错误
+那么应该是您默认安装了CUDA版本，即GPU版本
+这种情况下建议您安装CPU版本，即把下图中CUDA版本选择为“None”后的命令进行安装
+Q3 安装成功却无法import？路径错误 如果您出现内容，您可以直接在CMD中输入python后打出import torch内容后没有报错，那么恭喜您，pytorch已经成功安装到了您的电脑。
+但是不要着急，这并不意味着您可以将pytorch在生产环境中使用。
+如图：这可能是由于您安装了多个python环境（包括但不限于原生python，anaconda等），就可能会产生将Torch安装到自己也不知道哪个环境的情况，结果即如上图。
+此时有三个解决方案：
+1. 卸载所有环境，只保留一个环境（建议anaconda）【简单】 2. 在所有环境中全部安装一遍Torch【中等】 3. 手动调整系统环境变量中的路径，将Torch安装到自己需要的环境中【较难】  以上即是安装pytorch中的常见问题，如果有其他问题可以向我发邮件，我会在看到后回复~" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://lyleshaw.com/tech/install-pytorch/" />
+<meta property="og:image" content="https://lyleshaw.com"/>
+<meta property="article:published_time" content="2020-09-24T18:42:36+08:00" />
+<meta property="article:modified_time" content="2020-09-24T18:42:36+08:00" />
+
+
+
+
+
+
+    <meta property="article:published_time" content="2020-09-24 18:42:36 &#43;0800 &#43;0800" />
+
+
+
+
+
+
+
+
+    </head>
+
+    <body class="">
+        <div class="container">
+            <header class="header">
+    <span class="header__inner">
+        <a href="https://lyleshaw.com/" style="text-decoration: none;">
+    <div class="logo">
+        
+            <span class="logo__mark">></span>
+            <span class="logo__text">$ cd /home/</span>
+            <span class="logo__cursor" style=
+                  "
+                   
+                   ">
+            </span>
+        
+    </div>
+</a>
+
+
+        <span class="header__right">
+            
+                <nav class="menu">
+    <ul class="menu__inner"><li><a href="https://lyleshaw.com/about">关于</a></li><li><a href="https://lyleshaw.com/friends-links/">友链</a></li><li><a href="https://lyleshaw.com/tech/">技术</a></li><li><a href="https://lyleshaw.com/life/">日常</a></li><li><a href="https://lyleshaw.com/tags/">标签</a></li>
+    </ul>
+</nav>
+
+                <span class="menu-trigger">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                        <path d="M0 0h24v24H0z" fill="none"/>
+                        <path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z"/>
+                    </svg>
+                </span>
+            
+
+            <span class="theme-toggle unselectable"><svg class="theme-toggler" width="24" height="24" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <path d="M22 41C32.4934 41 41 32.4934 41 22C41 11.5066 32.4934 3 22
+  3C11.5066 3 3 11.5066 3 22C3 32.4934 11.5066 41 22 41ZM7 22C7
+  13.7157 13.7157 7 22 7V37C13.7157 37 7 30.2843 7 22Z"/>
+</svg>
+</span>
+        </span>
+    </span>
+</header>
+
+
+            <div class="content">
+                
+    <main class="post">
+
+        <div class="post-info">
+            
+            </p>
+        </div>
+
+        <article>
+            <h2 class="post-title"><a href="https://lyleshaw.com/tech/install-pytorch/">PyTorch使用指南——pytorch安装</a></h2>
+
+            
+
+            <div class="post-content">
+                <blockquote>
+<p><em><strong>本文首发于<a href="https://lyleshaw.com/tech/wechat-bot/">https://lyleshaw.com/tech/wechat-bot/</a></strong></em></p>
+<p>最近好几个朋友在问pytorch安装的问题，总结了一下，大家好像都是【超时】和【路径】问题，因此在整个系列前些个0篇，介绍pytorch安装中的各种坑</p>
+</blockquote>
+<h2 id="q0-一些小问题">Q0 一些小问题</h2>
+<p><img src="https://s1.ax1x.com/2020/09/24/0pP0N4.png" alt="1"></p>
+<p>有朋友首先问了我这个问题&hellip;这个需要明确一个前提，即pytorch在pip中实际上并不叫pytorch，直接pip install pytorch是会报错的，应该使用<a href="https://pytorch.org/get-started/locally/">官网安装命令</a>完成安装。</p>
+<h2 id="q1-超时如何使用pipconda镜像">Q1 超时——如何使用pip/conda镜像</h2>
+<p>其次常见的问题应该是time out，即超时错误。这是由于Torch仓库在海外，访问外网的速度会有所限制，而连接超过设定时间后即会自动终止安装，这时候就需要通过国内镜像来完成安装。</p>
+<p><strong>以下提供部分常用镜像地址</strong></p>
+<pre><code>清华：https://pypi.tuna.tsinghua.edu.cn/simple
+阿里云：http://mirrors.aliyun.com/pypi/simple/
+中国科技大学 https://pypi.mirrors.ustc.edu.cn/simple/
+豆瓣：http://pypi.douban.com/simple/
+</code></pre><p>通过我们会使用清华源或阿里源</p>
+<p>如果您不经常使用python，仅仅为了任务而使用pytorch，那么我建议您在该次安装中使用暂时的镜像，命令为</p>
+<pre><code>pip install -i https://pypi.tuna.tsinghua.edu.cn/simple {Your Pack's Name}
+</code></pre><p>对于Torch安装而言，则为</p>
+<pre><code>pip install -i https://pypi.tuna.tsinghua.edu.cn/simple torch==1.6.0+cpu torchvision==0.7.0+cpu -f https://download.pytorch.org/whl/torch_stable.html
+</code></pre><p>倘若您会经常使用python，那么我建议您直接将pip安装来源永久修改为清华源，方法如下：</p>
+<p>首先找到如下路径，{Your User Name}为您的用户名：</p>
+<pre><code>C:\User\{Your User Name}\pip\pip.ini
+</code></pre><p>其次修改pip.ini的内容为如下内容：</p>
+<pre><code>[global]
+index-url = https://pypi.tuna.tsinghua.edu.cn/simple
+[install]
+trusted-host=mirrors.aliyun.com
+</code></pre><p>一般而言，通过如上方法即可成功。</p>
+<h2 id="q2-安装失败试试cpu版">Q2 安装失败？试试CPU版</h2>
+<p>如果上述安装过程出现如下错误</p>
+<p><img src="https://s1.ax1x.com/2020/09/24/0pFrOx.png" alt="2"></p>
+<p>那么应该是您默认安装了CUDA版本，即GPU版本</p>
+<p>这种情况下建议您安装CPU版本，即把下图中CUDA版本选择为“None”后的命令进行安装</p>
+<p><img src="https://s1.ax1x.com/2020/09/24/0pFIXt.png" alt="3"></p>
+<h2 id="q3-安装成功却无法import路径错误">Q3 安装成功却无法import？路径错误</h2>
+<p>如果您出现<img src="https://s1.ax1x.com/2020/09/24/0pFv1s.png" alt="4">内容，您可以直接在CMD中输入python后打出import torch内容后没有报错，那么恭喜您，pytorch已经成功安装到了您的电脑。</p>
+<p>但是不要着急，这并不意味着您可以将pytorch在生产环境中使用。</p>
+<p>如图：<img src="https://s1.ax1x.com/2020/09/24/0pkFNF.png" alt="5"></p>
+<p>这可能是由于您安装了多个python环境（包括但不限于原生python，anaconda等），就可能会产生将Torch安装到自己也不知道哪个环境的情况，结果即如上图。</p>
+<p>此时有三个解决方案：</p>
+<h3 id="1-卸载所有环境只保留一个环境建议anaconda简单">1. 卸载所有环境，只保留一个环境（建议anaconda）【简单】</h3>
+<h3 id="2-在所有环境中全部安装一遍torch中等">2. 在所有环境中全部安装一遍Torch【中等】</h3>
+<h3 id="3-手动调整系统环境变量中的路径将torch安装到自己需要的环境中较难">3. 手动调整系统环境变量中的路径，将Torch安装到自己需要的环境中【较难】</h3>
+<blockquote>
+<p>以上即是安装pytorch中的常见问题，如果有其他问题可以向我发邮件，我会在看到后回复~</p>
+</blockquote>
+
+            </div>
+
+            <div id="comments" class="thin">
+                <script src='//unpkg.com/valine/dist/Valine.min.js'></script>
+                <div id="vcomments"></div>
+        <script>
+            new Valine({
+                el: '#vcomments',
+                appId: 'DOmYnb7Gz1u6y9cIVbbGJ6wv-gzGzoHsz',
+                appKey: 'sdy2Fpy2N3Pw9t7nhFxtv1B6'
+            })
+        </script>
+
+
+        </article>
+
+        <hr />
+
+        <div class="post-info">
+  				<p>
+  					<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-tag meta-icon"><path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"></path><line x1="7" y1="7" x2="7" y2="7"></line></svg><span class="tag"><a href="https://lyleshaw.com/tags/pytorch">PyTorch</a></span><span class="tag"><a href="https://lyleshaw.com/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0">机器学习</a></span>
+  				</p>
+  		</div>
+    </main>
+
+            </div>
+
+            
+                <footer class="footer">
+    <div class="footer__inner">
+
+        
+        <script>
+			var _hmt = _hmt || [];
+			(function() {
+			  var hm = document.createElement("script");
+			  hm.src = "https://hm.baidu.com/hm.js?ea20553a4ab575086416a5bfe37b3f3e";
+			  var s = document.getElementsByTagName("script")[0]; 
+			  s.parentNode.insertBefore(hm, s);
+			})();
+            </script>
+            
+            
+        <div class="footer__content">
+            <span>&copy; 2021</span>
+            
+                <span><a href="https://lyleshaw.com">lyleshaw</a></span>
+            
+            
+                <span><a href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank" rel="noopener">CC BY-NC 4.0</a></span>
+            
+            <span> <a href="https://lyleshaw.com/posts/index.xml" target="_blank" title="rss"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-rss"><path d="M4 11a9 9 0 0 1 9 9"></path><path d="M4 4a16 16 0 0 1 16 16"></path><circle cx="5" cy="19" r="1"></circle></svg></a></span>
+        </div>
+    </div>
+    <p><a href="http://www.beian.miit.gov.cn/" target="_blank" rel="noopener" one-link-mark="yes">豫ICP备·19030768号</a></p>
+    <div class="footer__inner">
+        <div class="footer__content">
+            <span>Powered by <a href="http://gohugo.io">Hugo</a></span>
+            <span>Made by <a href="https://github.com/rhazdon">Djordje Atlialp</a></span>
+        </div>
+    </div>
+</footer>
+
+            
+        </div>
+
+        
+
+
+
+
+<script type="text/javascript" src="https://lyleshaw.com/bundle.min.dc716e9092c9820b77f96da294d0120aeeb189b5bcea9752309ebea27fd53bbe6b13cffb2aca8ecf32525647ceb7001f76091de4199ac5a3caa432c070247f5b.js" integrity="sha512-3HFukJLJggt3&#43;W2ilNASCu6xibW86pdSMJ6&#43;on/VO75rE8/7KsqOzzJSVkfOtwAfdgkd5BmaxaPKpDLAcCR/Ww=="></script>
+
+
+
+    </body>
+</html>

@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>微信 on Lyle&#39;s Blog</title>
+    <link>https://lyleshaw.com/tags/%E5%BE%AE%E4%BF%A1/</link>
+    <description>Recent content in 微信 on Lyle&#39;s Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-CN</language>
+    <copyright>&lt;a href=&#34;https://creativecommons.org/licenses/by-nc/4.0/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;CC BY-NC 4.0&lt;/a&gt;</copyright>
+    <lastBuildDate>Tue, 20 Oct 2020 14:09:21 +0800</lastBuildDate><atom:link href="https://lyleshaw.com/tags/%E5%BE%AE%E4%BF%A1/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>微信机器人踩坑记录</title>
+      <link>https://lyleshaw.com/tech/wechat-bot/</link>
+      <pubDate>Tue, 20 Oct 2020 14:09:21 +0800</pubDate>
+      
+      <guid>https://lyleshaw.com/tech/wechat-bot/</guid>
+      <description>本文首发于https://lyleshaw.com/tech/wechat-bot/
+最近接了个做微信社群运营机器人的单，本来以为很简单框架很多来着，结果没想到断断续续搞了小两个星期，写篇博客记录一下踩坑的记录。
+ 序 首先我大致了解了一下和微信通讯的方式，主要分以下几种方式：
+   方式 优点 缺点     Web微信 方便易用框架多 17年后新注册的微信无法使用Web微信   iPad/Mac协议 几乎全是优点 开发成本高，可用框架收费高   PC微信HOOK 好用，开源框架相对多 无法及时跟进微信版本，需要用固定版本微信，且实测如果微信群聊/人数太多会导致微信崩溃    想法  对于web微信的框架，包括itechat等主流框架（提一句，wechaty的web版也是开源免费的），虽然对于我本人的帐号是可以使用的，但是无奈需求方用不了，只能舍弃； 对于iPad/Mac协议，做的最好的应该是wechaty，但是呢其商用版单账号单月200R，负担不其，最初时并没有考虑，但是其实可以通过为wechaty社区贡献博客/为项目贡献来获得一年免费token（但是不支持多语言版，只能用typescript）； 于是我走向了hook微信的道路&amp;hellip;&amp;hellip;  PC微信之HOOK hook原理 PC微信HOOK是直接用工具（CE）查找微信各个数据在内存中的地址，然后通过DLL对其进行读取、修改进而达到和微信通讯的方式。
+hook之一 我最早看到的是这一篇https://zhuanlan.zhihu.com/p/114214846，是一个【目前似乎是高中的？】女孩子做的，写的东西能用&amp;hellip;但是问题在于，开发者并没有太多开发经验，所以很多地方都很不规范、亦或者用一些奇怪的解决方式来搞的【但是你并不能苛求一个刚上高中的学生做的更好了】&amp;hellip;
+比如说这个东西的原理在于通过hook的方式拿到微信的数据，然后把读取的数据写到sqlite数据库里，然后python文件直接读取sqlite数据库里的聊天信息&amp;hellip;
+操作很迷惑，但是确实能用，只是hook和写入sqlite的过程被封装进了一个exe文件，你无法定制自己需要的数据，只能被动接收数据库中有的东西。
+而数据库中存储了微信id、聊天内容、时间、群聊id等，并没有我需要的数据，最终只能放弃。
+ Github地址：https://github.com/infopensource/WechatBot
+ hook之二 我第二个看到的是https://zhuanlan.zhihu.com/p/118674498，看上去很nb的样子，但是我搞了很多次不知道它的token从哪里来的，甚至有人私信问也没有回，于是放弃。
+如果有人搞懂了这玩意怎么用可以联系我更新。
+ Github地址：https://github.com/veikai/PyWeChatSpy
+ hook之三 这是我使用的最后一个hook，也是最好的一个&amp;hellip;支持两个版本的微信注入（2.8和2.9），并且同时提供了websocket协议和http协议的数据传输。
+最早的时候因为客户端里python版本只提供了websocket协议版本的，我也没有仔细看文档，所以我以为它只有websocket协议的&amp;hellip;为此甚至还提前学了学ws协议（正常来讲应该是下一节计网课的内容，好吧，确实不难），然鹅走ws协议我有一些数据一直拿不到（报错或者返回null），我也不知道为什么，应该是这个框架本身的bug。
+本来我都快放弃了&amp;hellip;然鹅最后看了看文档里有一句话
+ 请参见client.js（websocket客户端）和httpclient.js（http客户端）示例代码
+ 嗯？httpclient.js？？？http？？？好吧，于是我才最终意识到它还有http协议版本&amp;hellip;
+于是开始重构代码，小号测试成功，准备部署到服务器，部署完成。
+然后&amp;hellip;交付&amp;hellip;结果问题来了，交付时使用的他们的微信号上有几百个微信群，每个微信群有几百个成员，我猜测可能是因为同一时期对微信内存的修改次数过多，总之，这个帐号一运行微信就崩溃了，然后重启，再尝试，继续崩溃&amp;hellip;
+于是看了看代码，改了一点点，仍然无效，最终只能放弃了&amp;hellip;
+但是，倘若你使用的微信号并没有那个量级的请求量，我仍然觉得这是目前PC微信HOOK的最好的框架。【嗯，甚至在我写这篇博客时刚刚更新了一个fix bug的新版本，目前还没尝试】
+ Github地址：https://github.com/cixingguangming55555/wechat-bot</description>
+    </item>
+    
+  </channel>
+</rss>

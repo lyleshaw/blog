@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>机器学习 on Lyle&#39;s Blog</title>
+    <link>https://lyleshaw.com/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/</link>
+    <description>Recent content in 机器学习 on Lyle&#39;s Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-CN</language>
+    <copyright>&lt;a href=&#34;https://creativecommons.org/licenses/by-nc/4.0/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;CC BY-NC 4.0&lt;/a&gt;</copyright>
+    <lastBuildDate>Thu, 24 Sep 2020 18:42:36 +0800</lastBuildDate><atom:link href="https://lyleshaw.com/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>PyTorch使用指南——pytorch安装</title>
+      <link>https://lyleshaw.com/tech/install-pytorch/</link>
+      <pubDate>Thu, 24 Sep 2020 18:42:36 +0800</pubDate>
+      
+      <guid>https://lyleshaw.com/tech/install-pytorch/</guid>
+      <description>本文首发于https://lyleshaw.com/tech/wechat-bot/
+最近好几个朋友在问pytorch安装的问题，总结了一下，大家好像都是【超时】和【路径】问题，因此在整个系列前些个0篇，介绍pytorch安装中的各种坑
+ Q0 一些小问题 有朋友首先问了我这个问题&amp;hellip;这个需要明确一个前提，即pytorch在pip中实际上并不叫pytorch，直接pip install pytorch是会报错的，应该使用官网安装命令完成安装。
+Q1 超时——如何使用pip/conda镜像 其次常见的问题应该是time out，即超时错误。这是由于Torch仓库在海外，访问外网的速度会有所限制，而连接超过设定时间后即会自动终止安装，这时候就需要通过国内镜像来完成安装。
+以下提供部分常用镜像地址
+清华：https://pypi.tuna.tsinghua.edu.cn/simple 阿里云：http://mirrors.aliyun.com/pypi/simple/ 中国科技大学 https://pypi.mirrors.ustc.edu.cn/simple/ 豆瓣：http://pypi.douban.com/simple/ 通过我们会使用清华源或阿里源
+如果您不经常使用python，仅仅为了任务而使用pytorch，那么我建议您在该次安装中使用暂时的镜像，命令为
+pip install -i https://pypi.tuna.tsinghua.edu.cn/simple {Your Pack&#39;s Name} 对于Torch安装而言，则为
+pip install -i https://pypi.tuna.tsinghua.edu.cn/simple torch==1.6.0+cpu torchvision==0.7.0+cpu -f https://download.pytorch.org/whl/torch_stable.html 倘若您会经常使用python，那么我建议您直接将pip安装来源永久修改为清华源，方法如下：
+首先找到如下路径，{Your User Name}为您的用户名：
+C:\User\{Your User Name}\pip\pip.ini 其次修改pip.ini的内容为如下内容：
+[global] index-url = https://pypi.tuna.tsinghua.edu.cn/simple [install] trusted-host=mirrors.aliyun.com 一般而言，通过如上方法即可成功。
+Q2 安装失败？试试CPU版 如果上述安装过程出现如下错误
+那么应该是您默认安装了CUDA版本，即GPU版本
+这种情况下建议您安装CPU版本，即把下图中CUDA版本选择为“None”后的命令进行安装
+Q3 安装成功却无法import？路径错误 如果您出现内容，您可以直接在CMD中输入python后打出import torch内容后没有报错，那么恭喜您，pytorch已经成功安装到了您的电脑。
+但是不要着急，这并不意味着您可以将pytorch在生产环境中使用。
+如图：这可能是由于您安装了多个python环境（包括但不限于原生python，anaconda等），就可能会产生将Torch安装到自己也不知道哪个环境的情况，结果即如上图。
+此时有三个解决方案：
+1. 卸载所有环境，只保留一个环境（建议anaconda）【简单】 2. 在所有环境中全部安装一遍Torch【中等】 3. 手动调整系统环境变量中的路径，将Torch安装到自己需要的环境中【较难】  以上即是安装pytorch中的常见问题，如果有其他问题可以向我发邮件，我会在看到后回复~</description>
+    </item>
+    
+    <item>
+      <title>PyTorch使用指南——数据引入</title>
+      <link>https://lyleshaw.com/tech/import-data/</link>
+      <pubDate>Mon, 17 Aug 2020 22:36:36 +0800</pubDate>
+      
+      <guid>https://lyleshaw.com/tech/import-data/</guid>
+      <description>本文首发于https://lyleshaw.com/tech/wechat-bot/
+ 导入包 首先来一段正常的导入包代码，我将每个包的功能注释到代码后
+import torch # 引入Torch，没啥可说的 import torch.nn as nn # 引入神经网络模块，模型的定义需要用到nn.Model模块 import torch.nn.functional as F # 函数模块，包括机器学习里常用的一些计算函数 import pandas as pd #pandas，用来导入导出数据文件并做一定程度上的清洗 import numpy as np # numpy，python最好的科学计算库，常用在矩阵计算等 from torch.utils.data import * # 这个模块是数据相关的一些操作 from torch.autograd import Variable # variable函数是将tensor转化为可微分的variable类型 import torchvision # 这里面是一些计算机视觉常用的包和函数，一些 import matplotlib.pyplot as plt # plt画图用 import torch.optim as optim # 优化模块，有很多优化器，Adam、SGD等 from torch.utils.data import Dataset # 数据集操作 from torchvision import transforms, datasets, models # transforms是对数据进行totensor，归一化等等操作的包  可以根据不同任务的实际情况选择调用哪些包</description>
+    </item>
+    
+    <item>
+      <title>PyTorch使用指南</title>
+      <link>https://lyleshaw.com/tech/pytorch-guide/</link>
+      <pubDate>Mon, 17 Aug 2020 22:16:47 +0800</pubDate>
+      
+      <guid>https://lyleshaw.com/tech/pytorch-guide/</guid>
+      <description>本文首发于https://lyleshaw.com/tech/wechat-bot/
+ 为什么我要写这些？ 这将是一个系列的长文，我希望通过撰写这些文章使得一个对深度学习原理有一定理解的人快速上手pytorch。
+在深度学习建模方面的框架主要为tensorflow和pytorch，前者虽然在前些年占据优势，但是更适合工业级的部署任务，其计算图和仿佛在python里重构了一门新语言的设计非常劝退新手。相比之下，pytorch就更适合入门了。
+尽管pytorch相较于tensorflow较为容易，但是因其功能的复杂性，还是很容易让新手踩坑。（是的，说的是我本人，debug de到自闭，甚至跑起来时候都不敢相信）。
+这个系列会有哪些模块？ 我会分以下模块分别写文章来解释及列出常见错误原因：
+ Torch安装 数据引入 数据清洗 模型设计 模型运行 模型保存&amp;amp;调用 模型优化  参考 [1.] 常用代码片段. Lyle. https://github.com/lyleshaw/Frequently-used-Python-code.
+[2.] PyTorch 模型训练实用教程. 余霆嵩.</description>
+    </item>
+    
+  </channel>
+</rss>

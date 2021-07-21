@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="author" content="lyleshaw ">
+<meta name="description" content="本文首发于https://lyleshaw.com/tech/wechat-bot/
+最近接了个做微信社群运营机器人的单，本来以为很简单框架很多来着，结果没想到断断续续搞了小两个星期，写篇博客记录一下踩坑的记录。
+ 序 首先我大致了解了一下和微信通讯的方式，主要分以下几种方式：
+   方式 优点 缺点     Web微信 方便易用框架多 17年后新注册的微信无法使用Web微信   iPad/Mac协议 几乎全是优点 开发成本高，可用框架收费高   PC微信HOOK 好用，开源框架相对多 无法及时跟进微信版本，需要用固定版本微信，且实测如果微信群聊/人数太多会导致微信崩溃    想法  对于web微信的框架，包括itechat等主流框架（提一句，wechaty的web版也是开源免费的），虽然对于我本人的帐号是可以使用的，但是无奈需求方用不了，只能舍弃； 对于iPad/Mac协议，做的最好的应该是wechaty，但是呢其商用版单账号单月200R，负担不其，最初时并没有考虑，但是其实可以通过为wechaty社区贡献博客/为项目贡献来获得一年免费token（但是不支持多语言版，只能用typescript）； 于是我走向了hook微信的道路&amp;hellip;&amp;hellip;  PC微信之HOOK hook原理 PC微信HOOK是直接用工具（CE）查找微信各个数据在内存中的地址，然后通过DLL对其进行读取、修改进而达到和微信通讯的方式。
+hook之一 我最早看到的是这一篇https://zhuanlan.zhihu.com/p/114214846，是一个【目前似乎是高中的？】女孩子做的，写的东西能用&amp;hellip;但是问题在于，开发者并没有太多开发经验，所以很多地方都很不规范、亦或者用一些奇怪的解决方式来搞的【但是你并不能苛求一个刚上高中的学生做的更好了】&amp;hellip;
+比如说这个东西的原理在于通过hook的方式拿到微信的数据，然后把读取的数据写到sqlite数据库里，然后python文件直接读取sqlite数据库里的聊天信息&amp;hellip;
+操作很迷惑，但是确实能用，只是hook和写入sqlite的过程被封装进了一个exe文件，你无法定制自己需要的数据，只能被动接收数据库中有的东西。
+而数据库中存储了微信id、聊天内容、时间、群聊id等，并没有我需要的数据，最终只能放弃。
+ Github地址：https://github.com/infopensource/WechatBot
+ hook之二 我第二个看到的是https://zhuanlan.zhihu.com/p/118674498，看上去很nb的样子，但是我搞了很多次不知道它的token从哪里来的，甚至有人私信问也没有回，于是放弃。
+如果有人搞懂了这玩意怎么用可以联系我更新。
+ Github地址：https://github.com/veikai/PyWeChatSpy
+ hook之三 这是我使用的最后一个hook，也是最好的一个&amp;hellip;支持两个版本的微信注入（2.8和2.9），并且同时提供了websocket协议和http协议的数据传输。
+最早的时候因为客户端里python版本只提供了websocket协议版本的，我也没有仔细看文档，所以我以为它只有websocket协议的&amp;hellip;为此甚至还提前学了学ws协议（正常来讲应该是下一节计网课的内容，好吧，确实不难），然鹅走ws协议我有一些数据一直拿不到（报错或者返回null），我也不知道为什么，应该是这个框架本身的bug。
+本来我都快放弃了&amp;hellip;然鹅最后看了看文档里有一句话
+ 请参见client.js（websocket客户端）和httpclient.js（http客户端）示例代码
+ 嗯？httpclient.js？？？http？？？好吧，于是我才最终意识到它还有http协议版本&amp;hellip;
+于是开始重构代码，小号测试成功，准备部署到服务器，部署完成。
+然后&amp;hellip;交付&amp;hellip;结果问题来了，交付时使用的他们的微信号上有几百个微信群，每个微信群有几百个成员，我猜测可能是因为同一时期对微信内存的修改次数过多，总之，这个帐号一运行微信就崩溃了，然后重启，再尝试，继续崩溃&amp;hellip;
+于是看了看代码，改了一点点，仍然无效，最终只能放弃了&amp;hellip;
+但是，倘若你使用的微信号并没有那个量级的请求量，我仍然觉得这是目前PC微信HOOK的最好的框架。【嗯，甚至在我写这篇博客时刚刚更新了一个fix bug的新版本，目前还没尝试】
+ Github地址：https://github.com/cixingguangming55555/wechat-bot" />
+<meta name="keywords" content=", 微信, 机器人, WeChat, robot" />
+<meta name="robots" content="noodp" />
+<meta name="theme-color" content="#252627" />
+<link rel="canonical" href="https://lyleshaw.com/tech/wechat-bot/" />
+
+
+    <title>
+        
+            微信机器人踩坑记录 : Lyle&#39;s Blog 
+        
+    </title>
+
+
+
+<link href="https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.2.1/css/flag-icon.min.css" rel="stylesheet"
+    type="text/css">
+
+
+
+<link rel="stylesheet" href="https://lyleshaw.com/main.938b46a9abc165937c10db6610d451a8d537ed0977f2543ff126c72da2160501.css">
+
+
+
+
+    <link rel="apple-touch-icon" sizes="180x180" href="https://lyleshaw.com/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="https://lyleshaw.com/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="https://lyleshaw.com/favicon-16x16.png">
+    <link rel="manifest" href="https://lyleshaw.com/site.webmanifest">
+    <link rel="mask-icon" href="https://lyleshaw.com/safari-pinned-tab.svg" color="#252627">
+    <link rel="shortcut icon" href="https://lyleshaw.com/favicon.ico">
+    <meta name="msapplication-TileColor" content="#252627">
+    <meta name="theme-color" content="#252627">
+
+
+
+<meta itemprop="name" content="微信机器人踩坑记录">
+<meta itemprop="description" content="本文首发于https://lyleshaw.com/tech/wechat-bot/
+最近接了个做微信社群运营机器人的单，本来以为很简单框架很多来着，结果没想到断断续续搞了小两个星期，写篇博客记录一下踩坑的记录。
+ 序 首先我大致了解了一下和微信通讯的方式，主要分以下几种方式：
+   方式 优点 缺点     Web微信 方便易用框架多 17年后新注册的微信无法使用Web微信   iPad/Mac协议 几乎全是优点 开发成本高，可用框架收费高   PC微信HOOK 好用，开源框架相对多 无法及时跟进微信版本，需要用固定版本微信，且实测如果微信群聊/人数太多会导致微信崩溃    想法  对于web微信的框架，包括itechat等主流框架（提一句，wechaty的web版也是开源免费的），虽然对于我本人的帐号是可以使用的，但是无奈需求方用不了，只能舍弃； 对于iPad/Mac协议，做的最好的应该是wechaty，但是呢其商用版单账号单月200R，负担不其，最初时并没有考虑，但是其实可以通过为wechaty社区贡献博客/为项目贡献来获得一年免费token（但是不支持多语言版，只能用typescript）； 于是我走向了hook微信的道路&hellip;&hellip;  PC微信之HOOK hook原理 PC微信HOOK是直接用工具（CE）查找微信各个数据在内存中的地址，然后通过DLL对其进行读取、修改进而达到和微信通讯的方式。
+hook之一 我最早看到的是这一篇https://zhuanlan.zhihu.com/p/114214846，是一个【目前似乎是高中的？】女孩子做的，写的东西能用&hellip;但是问题在于，开发者并没有太多开发经验，所以很多地方都很不规范、亦或者用一些奇怪的解决方式来搞的【但是你并不能苛求一个刚上高中的学生做的更好了】&hellip;
+比如说这个东西的原理在于通过hook的方式拿到微信的数据，然后把读取的数据写到sqlite数据库里，然后python文件直接读取sqlite数据库里的聊天信息&hellip;
+操作很迷惑，但是确实能用，只是hook和写入sqlite的过程被封装进了一个exe文件，你无法定制自己需要的数据，只能被动接收数据库中有的东西。
+而数据库中存储了微信id、聊天内容、时间、群聊id等，并没有我需要的数据，最终只能放弃。
+ Github地址：https://github.com/infopensource/WechatBot
+ hook之二 我第二个看到的是https://zhuanlan.zhihu.com/p/118674498，看上去很nb的样子，但是我搞了很多次不知道它的token从哪里来的，甚至有人私信问也没有回，于是放弃。
+如果有人搞懂了这玩意怎么用可以联系我更新。
+ Github地址：https://github.com/veikai/PyWeChatSpy
+ hook之三 这是我使用的最后一个hook，也是最好的一个&hellip;支持两个版本的微信注入（2.8和2.9），并且同时提供了websocket协议和http协议的数据传输。
+最早的时候因为客户端里python版本只提供了websocket协议版本的，我也没有仔细看文档，所以我以为它只有websocket协议的&hellip;为此甚至还提前学了学ws协议（正常来讲应该是下一节计网课的内容，好吧，确实不难），然鹅走ws协议我有一些数据一直拿不到（报错或者返回null），我也不知道为什么，应该是这个框架本身的bug。
+本来我都快放弃了&hellip;然鹅最后看了看文档里有一句话
+ 请参见client.js（websocket客户端）和httpclient.js（http客户端）示例代码
+ 嗯？httpclient.js？？？http？？？好吧，于是我才最终意识到它还有http协议版本&hellip;
+于是开始重构代码，小号测试成功，准备部署到服务器，部署完成。
+然后&hellip;交付&hellip;结果问题来了，交付时使用的他们的微信号上有几百个微信群，每个微信群有几百个成员，我猜测可能是因为同一时期对微信内存的修改次数过多，总之，这个帐号一运行微信就崩溃了，然后重启，再尝试，继续崩溃&hellip;
+于是看了看代码，改了一点点，仍然无效，最终只能放弃了&hellip;
+但是，倘若你使用的微信号并没有那个量级的请求量，我仍然觉得这是目前PC微信HOOK的最好的框架。【嗯，甚至在我写这篇博客时刚刚更新了一个fix bug的新版本，目前还没尝试】
+ Github地址：https://github.com/cixingguangming55555/wechat-bot">
+<meta itemprop="datePublished" content="2020-10-20T14:09:21+08:00" />
+<meta itemprop="dateModified" content="2020-10-20T14:09:21+08:00" />
+<meta itemprop="wordCount" content="57">
+<meta itemprop="image" content="https://lyleshaw.com"/>
+
+
+
+<meta itemprop="keywords" content="微信,机器人,WeChat,robot," />
+
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:image" content="https://lyleshaw.com"/>
+
+<meta name="twitter:title" content="微信机器人踩坑记录"/>
+<meta name="twitter:description" content="本文首发于https://lyleshaw.com/tech/wechat-bot/
+最近接了个做微信社群运营机器人的单，本来以为很简单框架很多来着，结果没想到断断续续搞了小两个星期，写篇博客记录一下踩坑的记录。
+ 序 首先我大致了解了一下和微信通讯的方式，主要分以下几种方式：
+   方式 优点 缺点     Web微信 方便易用框架多 17年后新注册的微信无法使用Web微信   iPad/Mac协议 几乎全是优点 开发成本高，可用框架收费高   PC微信HOOK 好用，开源框架相对多 无法及时跟进微信版本，需要用固定版本微信，且实测如果微信群聊/人数太多会导致微信崩溃    想法  对于web微信的框架，包括itechat等主流框架（提一句，wechaty的web版也是开源免费的），虽然对于我本人的帐号是可以使用的，但是无奈需求方用不了，只能舍弃； 对于iPad/Mac协议，做的最好的应该是wechaty，但是呢其商用版单账号单月200R，负担不其，最初时并没有考虑，但是其实可以通过为wechaty社区贡献博客/为项目贡献来获得一年免费token（但是不支持多语言版，只能用typescript）； 于是我走向了hook微信的道路&hellip;&hellip;  PC微信之HOOK hook原理 PC微信HOOK是直接用工具（CE）查找微信各个数据在内存中的地址，然后通过DLL对其进行读取、修改进而达到和微信通讯的方式。
+hook之一 我最早看到的是这一篇https://zhuanlan.zhihu.com/p/114214846，是一个【目前似乎是高中的？】女孩子做的，写的东西能用&hellip;但是问题在于，开发者并没有太多开发经验，所以很多地方都很不规范、亦或者用一些奇怪的解决方式来搞的【但是你并不能苛求一个刚上高中的学生做的更好了】&hellip;
+比如说这个东西的原理在于通过hook的方式拿到微信的数据，然后把读取的数据写到sqlite数据库里，然后python文件直接读取sqlite数据库里的聊天信息&hellip;
+操作很迷惑，但是确实能用，只是hook和写入sqlite的过程被封装进了一个exe文件，你无法定制自己需要的数据，只能被动接收数据库中有的东西。
+而数据库中存储了微信id、聊天内容、时间、群聊id等，并没有我需要的数据，最终只能放弃。
+ Github地址：https://github.com/infopensource/WechatBot
+ hook之二 我第二个看到的是https://zhuanlan.zhihu.com/p/118674498，看上去很nb的样子，但是我搞了很多次不知道它的token从哪里来的，甚至有人私信问也没有回，于是放弃。
+如果有人搞懂了这玩意怎么用可以联系我更新。
+ Github地址：https://github.com/veikai/PyWeChatSpy
+ hook之三 这是我使用的最后一个hook，也是最好的一个&hellip;支持两个版本的微信注入（2.8和2.9），并且同时提供了websocket协议和http协议的数据传输。
+最早的时候因为客户端里python版本只提供了websocket协议版本的，我也没有仔细看文档，所以我以为它只有websocket协议的&hellip;为此甚至还提前学了学ws协议（正常来讲应该是下一节计网课的内容，好吧，确实不难），然鹅走ws协议我有一些数据一直拿不到（报错或者返回null），我也不知道为什么，应该是这个框架本身的bug。
+本来我都快放弃了&hellip;然鹅最后看了看文档里有一句话
+ 请参见client.js（websocket客户端）和httpclient.js（http客户端）示例代码
+ 嗯？httpclient.js？？？http？？？好吧，于是我才最终意识到它还有http协议版本&hellip;
+于是开始重构代码，小号测试成功，准备部署到服务器，部署完成。
+然后&hellip;交付&hellip;结果问题来了，交付时使用的他们的微信号上有几百个微信群，每个微信群有几百个成员，我猜测可能是因为同一时期对微信内存的修改次数过多，总之，这个帐号一运行微信就崩溃了，然后重启，再尝试，继续崩溃&hellip;
+于是看了看代码，改了一点点，仍然无效，最终只能放弃了&hellip;
+但是，倘若你使用的微信号并没有那个量级的请求量，我仍然觉得这是目前PC微信HOOK的最好的框架。【嗯，甚至在我写这篇博客时刚刚更新了一个fix bug的新版本，目前还没尝试】
+ Github地址：https://github.com/cixingguangming55555/wechat-bot"/>
+
+
+
+    <meta property="og:title" content="微信机器人踩坑记录" />
+<meta property="og:description" content="本文首发于https://lyleshaw.com/tech/wechat-bot/
+最近接了个做微信社群运营机器人的单，本来以为很简单框架很多来着，结果没想到断断续续搞了小两个星期，写篇博客记录一下踩坑的记录。
+ 序 首先我大致了解了一下和微信通讯的方式，主要分以下几种方式：
+   方式 优点 缺点     Web微信 方便易用框架多 17年后新注册的微信无法使用Web微信   iPad/Mac协议 几乎全是优点 开发成本高，可用框架收费高   PC微信HOOK 好用，开源框架相对多 无法及时跟进微信版本，需要用固定版本微信，且实测如果微信群聊/人数太多会导致微信崩溃    想法  对于web微信的框架，包括itechat等主流框架（提一句，wechaty的web版也是开源免费的），虽然对于我本人的帐号是可以使用的，但是无奈需求方用不了，只能舍弃； 对于iPad/Mac协议，做的最好的应该是wechaty，但是呢其商用版单账号单月200R，负担不其，最初时并没有考虑，但是其实可以通过为wechaty社区贡献博客/为项目贡献来获得一年免费token（但是不支持多语言版，只能用typescript）； 于是我走向了hook微信的道路&hellip;&hellip;  PC微信之HOOK hook原理 PC微信HOOK是直接用工具（CE）查找微信各个数据在内存中的地址，然后通过DLL对其进行读取、修改进而达到和微信通讯的方式。
+hook之一 我最早看到的是这一篇https://zhuanlan.zhihu.com/p/114214846，是一个【目前似乎是高中的？】女孩子做的，写的东西能用&hellip;但是问题在于，开发者并没有太多开发经验，所以很多地方都很不规范、亦或者用一些奇怪的解决方式来搞的【但是你并不能苛求一个刚上高中的学生做的更好了】&hellip;
+比如说这个东西的原理在于通过hook的方式拿到微信的数据，然后把读取的数据写到sqlite数据库里，然后python文件直接读取sqlite数据库里的聊天信息&hellip;
+操作很迷惑，但是确实能用，只是hook和写入sqlite的过程被封装进了一个exe文件，你无法定制自己需要的数据，只能被动接收数据库中有的东西。
+而数据库中存储了微信id、聊天内容、时间、群聊id等，并没有我需要的数据，最终只能放弃。
+ Github地址：https://github.com/infopensource/WechatBot
+ hook之二 我第二个看到的是https://zhuanlan.zhihu.com/p/118674498，看上去很nb的样子，但是我搞了很多次不知道它的token从哪里来的，甚至有人私信问也没有回，于是放弃。
+如果有人搞懂了这玩意怎么用可以联系我更新。
+ Github地址：https://github.com/veikai/PyWeChatSpy
+ hook之三 这是我使用的最后一个hook，也是最好的一个&hellip;支持两个版本的微信注入（2.8和2.9），并且同时提供了websocket协议和http协议的数据传输。
+最早的时候因为客户端里python版本只提供了websocket协议版本的，我也没有仔细看文档，所以我以为它只有websocket协议的&hellip;为此甚至还提前学了学ws协议（正常来讲应该是下一节计网课的内容，好吧，确实不难），然鹅走ws协议我有一些数据一直拿不到（报错或者返回null），我也不知道为什么，应该是这个框架本身的bug。
+本来我都快放弃了&hellip;然鹅最后看了看文档里有一句话
+ 请参见client.js（websocket客户端）和httpclient.js（http客户端）示例代码
+ 嗯？httpclient.js？？？http？？？好吧，于是我才最终意识到它还有http协议版本&hellip;
+于是开始重构代码，小号测试成功，准备部署到服务器，部署完成。
+然后&hellip;交付&hellip;结果问题来了，交付时使用的他们的微信号上有几百个微信群，每个微信群有几百个成员，我猜测可能是因为同一时期对微信内存的修改次数过多，总之，这个帐号一运行微信就崩溃了，然后重启，再尝试，继续崩溃&hellip;
+于是看了看代码，改了一点点，仍然无效，最终只能放弃了&hellip;
+但是，倘若你使用的微信号并没有那个量级的请求量，我仍然觉得这是目前PC微信HOOK的最好的框架。【嗯，甚至在我写这篇博客时刚刚更新了一个fix bug的新版本，目前还没尝试】
+ Github地址：https://github.com/cixingguangming55555/wechat-bot" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://lyleshaw.com/tech/wechat-bot/" />
+<meta property="og:image" content="https://lyleshaw.com"/>
+<meta property="article:published_time" content="2020-10-20T14:09:21+08:00" />
+<meta property="article:modified_time" content="2020-10-20T14:09:21+08:00" />
+
+
+
+
+
+
+    <meta property="article:published_time" content="2020-10-20 14:09:21 &#43;0800 &#43;0800" />
+
+
+
+
+
+
+
+
+    </head>
+
+    <body class="">
+        <div class="container">
+            <header class="header">
+    <span class="header__inner">
+        <a href="https://lyleshaw.com/" style="text-decoration: none;">
+    <div class="logo">
+        
+            <span class="logo__mark">></span>
+            <span class="logo__text">$ cd /home/</span>
+            <span class="logo__cursor" style=
+                  "
+                   
+                   ">
+            </span>
+        
+    </div>
+</a>
+
+
+        <span class="header__right">
+            
+                <nav class="menu">
+    <ul class="menu__inner"><li><a href="https://lyleshaw.com/about">关于</a></li><li><a href="https://lyleshaw.com/friends-links/">友链</a></li><li><a href="https://lyleshaw.com/tech/">技术</a></li><li><a href="https://lyleshaw.com/life/">日常</a></li><li><a href="https://lyleshaw.com/tags/">标签</a></li>
+    </ul>
+</nav>
+
+                <span class="menu-trigger">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                        <path d="M0 0h24v24H0z" fill="none"/>
+                        <path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z"/>
+                    </svg>
+                </span>
+            
+
+            <span class="theme-toggle unselectable"><svg class="theme-toggler" width="24" height="24" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <path d="M22 41C32.4934 41 41 32.4934 41 22C41 11.5066 32.4934 3 22
+  3C11.5066 3 3 11.5066 3 22C3 32.4934 11.5066 41 22 41ZM7 22C7
+  13.7157 13.7157 7 22 7V37C13.7157 37 7 30.2843 7 22Z"/>
+</svg>
+</span>
+        </span>
+    </span>
+</header>
+
+
+            <div class="content">
+                
+    <main class="post">
+
+        <div class="post-info">
+            
+            </p>
+        </div>
+
+        <article>
+            <h2 class="post-title"><a href="https://lyleshaw.com/tech/wechat-bot/">微信机器人踩坑记录</a></h2>
+
+            
+
+            <div class="post-content">
+                <blockquote>
+<p><em><strong>本文首发于<a href="https://lyleshaw.com/tech/wechat-bot/">https://lyleshaw.com/tech/wechat-bot/</a></strong></em></p>
+<p>最近接了个做微信社群运营机器人的单，本来以为很简单框架很多来着，结果没想到断断续续搞了小两个星期，写篇博客记录一下踩坑的记录。</p>
+</blockquote>
+<h2 id="序">序</h2>
+<p>首先我大致了解了一下和微信通讯的方式，主要分以下几种方式：</p>
+<table>
+<thead>
+<tr>
+<th>方式</th>
+<th>优点</th>
+<th>缺点</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Web微信</td>
+<td>方便易用框架多</td>
+<td>17年后新注册的微信无法使用Web微信</td>
+</tr>
+<tr>
+<td>iPad/Mac协议</td>
+<td>几乎全是优点</td>
+<td>开发成本高，可用框架收费高</td>
+</tr>
+<tr>
+<td>PC微信HOOK</td>
+<td>好用，开源框架相对多</td>
+<td>无法及时跟进微信版本，需要用固定版本微信，且实测如果微信群聊/人数太多会导致微信崩溃</td>
+</tr>
+</tbody>
+</table>
+<h2 id="想法">想法</h2>
+<ol>
+<li>对于web微信的框架，包括itechat等主流框架（提一句，wechaty的web版也是开源免费的），虽然对于我本人的帐号是可以使用的，但是无奈需求方用不了，只能舍弃；</li>
+<li>对于iPad/Mac协议，做的最好的应该是wechaty，但是呢其商用版单账号单月200R，负担不其，最初时并没有考虑，但是其实可以通过为wechaty社区贡献博客/为项目贡献来获得一年免费token（但是不支持多语言版，只能用typescript）；</li>
+<li>于是我走向了hook微信的道路&hellip;&hellip;</li>
+</ol>
+<h2 id="pc微信之hook">PC微信之HOOK</h2>
+<h3 id="hook原理">hook原理</h3>
+<p>PC微信HOOK是直接用工具（CE）查找微信各个数据在内存中的地址，然后通过DLL对其进行读取、修改进而达到和微信通讯的方式。</p>
+<h3 id="hook之一">hook之一</h3>
+<p>我最早看到的是这一篇<a href="https://zhuanlan.zhihu.com/p/114214846">https://zhuanlan.zhihu.com/p/114214846</a>，是一个【目前似乎是高中的？】女孩子做的，写的东西能用&hellip;但是问题在于，开发者并没有太多开发经验，所以很多地方都很不规范、亦或者用一些奇怪的解决方式来搞的【但是你并不能苛求一个刚上高中的学生做的更好了】&hellip;</p>
+<p>比如说这个东西的原理在于通过hook的方式拿到微信的数据，然后把读取的数据写到sqlite数据库里，然后python文件直接读取sqlite数据库里的聊天信息&hellip;</p>
+<p>操作很迷惑，但是确实能用，只是hook和写入sqlite的过程被封装进了一个exe文件，你无法定制自己需要的数据，只能被动接收数据库中有的东西。</p>
+<p>而数据库中存储了<strong>微信id、聊天内容、时间、群聊id等</strong>，并没有我需要的数据，最终只能放弃。</p>
+<blockquote>
+<p>Github地址：<a href="https://github.com/infopensource/WechatBot">https://github.com/infopensource/WechatBot</a></p>
+</blockquote>
+<h3 id="hook之二">hook之二</h3>
+<p>我第二个看到的是<a href="https://zhuanlan.zhihu.com/p/118674498">https://zhuanlan.zhihu.com/p/118674498</a>，看上去很nb的样子，但是我搞了很多次不知道它的token从哪里来的，甚至有人私信问也没有回，于是放弃。</p>
+<p>如果有人搞懂了这玩意怎么用可以联系我更新。</p>
+<blockquote>
+<p>Github地址：<a href="https://github.com/veikai/PyWeChatSpy">https://github.com/veikai/PyWeChatSpy</a></p>
+</blockquote>
+<h3 id="hook之三">hook之三</h3>
+<p>这是我使用的最后一个hook，也是最好的一个&hellip;支持两个版本的微信注入（2.8和2.9），并且同时提供了websocket协议和http协议的数据传输。</p>
+<p>最早的时候因为客户端里python版本只提供了websocket协议版本的，我也没有<strong>仔细看文档</strong>，所以我以为它只有websocket协议的&hellip;为此甚至还提前学了学ws协议（正常来讲应该是下一节计网课的内容，好吧，确实不难），然鹅走ws协议我有一些数据一直拿不到（报错或者返回null），我也不知道为什么，应该是这个框架本身的bug。</p>
+<p>本来我都快放弃了&hellip;然鹅最后看了看文档里有一句话</p>
+<blockquote>
+<p>请参见client.js（websocket客户端）和httpclient.js（http客户端）示例代码</p>
+</blockquote>
+<p>嗯？httpclient.js？？？http？？？好吧，于是我才最终意识到它还有http协议版本&hellip;</p>
+<p>于是开始重构代码，小号测试成功，准备部署到服务器，部署完成。</p>
+<p>然后&hellip;交付&hellip;结果问题来了，交付时使用的他们的微信号上有几百个微信群，每个微信群有几百个成员，我猜测可能是因为<strong>同一时期对微信内存的修改次数过多</strong>，总之，这个帐号一运行微信就崩溃了，然后重启，再尝试，继续崩溃&hellip;</p>
+<p>于是看了看代码，改了一点点，仍然无效，最终只能放弃了&hellip;</p>
+<p>但是，<strong>倘若你使用的微信号并没有那个量级的请求量，我仍然觉得这是目前PC微信HOOK的最好的框架。</strong>【嗯，甚至在我写这篇博客时刚刚更新了一个fix bug的新版本，目前还没尝试】</p>
+<blockquote>
+<p>Github地址：<a href="https://github.com/cixingguangming55555/wechat-bot">https://github.com/cixingguangming55555/wechat-bot</a></p>
+</blockquote>
+<h2 id="wechaty">wechaty</h2>
+<p>好吧，最终我觉察到对于这个任务而言，hook微信并不是一个好的解决方案，于是我又不得不投向了iPad协议。</p>
+<p>自己开发肯定是不行，一是没那个能力，二是没那个精力。于是不得不使用wechaty&hellip;</p>
+<p>wechaty会为开发者提供15天免费token，期间如果能写一个基于wechaty的repo并开源、亦或者为wechaty社区贡献一篇博客，那么就可以获得1年的免费token，同时每在一个平台发一遍就奖励3个月&hellip;</p>
+<p>嗯，于是在hook确认不可用的当天下午，我就开始看起了wechaty文档并开始学typescript（只能用ts开发，用其他语言要加钱）。</p>
+<p>被ts的异步折腾半天后，终于写出了一个勉强可用的代码。</p>
+<p>原理是在ts端获得数据后，以http请求的方式请求到我的服务器后端（采用fastapi框架），fastapi接收数据后将数据处理并存储，在需要时展示。</p>
+<h2 id="final">final</h2>
+<p>最终，我用wechaty交付了。</p>
+<p>总结一下呢，这两个星期我学习了hook和dll注入的原理、速成了一波typescript、翻遍了目前github上大部分微信hook框架、赚了二百块外加每个月可以去白嫖一顿火锅来当维护费。</p>
+<p>嗯，还挺好的呢！</p>
+<p><strong>文中出现的我自身写的代码均未开源，如需学习交流可联系我</strong></p>
+
+            </div>
+
+            <div id="comments" class="thin">
+                <script src='//unpkg.com/valine/dist/Valine.min.js'></script>
+                <div id="vcomments"></div>
+        <script>
+            new Valine({
+                el: '#vcomments',
+                appId: 'DOmYnb7Gz1u6y9cIVbbGJ6wv-gzGzoHsz',
+                appKey: 'sdy2Fpy2N3Pw9t7nhFxtv1B6'
+            })
+        </script>
+
+
+        </article>
+
+        <hr />
+
+        <div class="post-info">
+  				<p>
+  					<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-tag meta-icon"><path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"></path><line x1="7" y1="7" x2="7" y2="7"></line></svg><span class="tag"><a href="https://lyleshaw.com/tags/%E5%BE%AE%E4%BF%A1">微信</a></span><span class="tag"><a href="https://lyleshaw.com/tags/%E6%9C%BA%E5%99%A8%E4%BA%BA">机器人</a></span><span class="tag"><a href="https://lyleshaw.com/tags/wechat">WeChat</a></span><span class="tag"><a href="https://lyleshaw.com/tags/robot">robot</a></span>
+  				</p>
+  		</div>
+    </main>
+
+            </div>
+
+            
+                <footer class="footer">
+    <div class="footer__inner">
+
+        
+        <script>
+			var _hmt = _hmt || [];
+			(function() {
+			  var hm = document.createElement("script");
+			  hm.src = "https://hm.baidu.com/hm.js?ea20553a4ab575086416a5bfe37b3f3e";
+			  var s = document.getElementsByTagName("script")[0]; 
+			  s.parentNode.insertBefore(hm, s);
+			})();
+            </script>
+            
+            
+        <div class="footer__content">
+            <span>&copy; 2021</span>
+            
+                <span><a href="https://lyleshaw.com">lyleshaw</a></span>
+            
+            
+                <span><a href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank" rel="noopener">CC BY-NC 4.0</a></span>
+            
+            <span> <a href="https://lyleshaw.com/posts/index.xml" target="_blank" title="rss"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-rss"><path d="M4 11a9 9 0 0 1 9 9"></path><path d="M4 4a16 16 0 0 1 16 16"></path><circle cx="5" cy="19" r="1"></circle></svg></a></span>
+        </div>
+    </div>
+    <p><a href="http://www.beian.miit.gov.cn/" target="_blank" rel="noopener" one-link-mark="yes">豫ICP备·19030768号</a></p>
+    <div class="footer__inner">
+        <div class="footer__content">
+            <span>Powered by <a href="http://gohugo.io">Hugo</a></span>
+            <span>Made by <a href="https://github.com/rhazdon">Djordje Atlialp</a></span>
+        </div>
+    </div>
+</footer>
+
+            
+        </div>
+
+        
+
+
+
+
+<script type="text/javascript" src="https://lyleshaw.com/bundle.min.dc716e9092c9820b77f96da294d0120aeeb189b5bcea9752309ebea27fd53bbe6b13cffb2aca8ecf32525647ceb7001f76091de4199ac5a3caa432c070247f5b.js" integrity="sha512-3HFukJLJggt3&#43;W2ilNASCu6xibW86pdSMJ6&#43;on/VO75rE8/7KsqOzzJSVkfOtwAfdgkd5BmaxaPKpDLAcCR/Ww=="></script>
+
+
+
+    </body>
+</html>
