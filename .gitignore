@@ -14,3 +14,7 @@ _book
 *.epub
 *.mobi
 *.pdf
+
+public
+resources
+.DS_Store
