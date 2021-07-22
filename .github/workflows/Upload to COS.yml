@@ -7,12 +7,13 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - uses: TencentCloud/cos-action@v1
-      - with:
-        secret_id: ${{ secrets.SecretId }}
-        secret_key: ${{ secrets.SecretKey }}
-        cos_bucket: lyleshaw-1253612989
-        cos_region: ap-shanghai
-        local_path: build
-        remote_path: .
-        clean: true
+      - name: COS
+        uses: TencentCloud/cos-action@v1
+        with:
+          secret_id: ${{ secrets.SecretId }}
+          secret_key: ${{ secrets.SecretKey }}
+          cos_bucket: lyleshaw-1253612989
+          cos_region: ap-shanghai
+          local_path: build
+          remote_path: .
+          clean: true
