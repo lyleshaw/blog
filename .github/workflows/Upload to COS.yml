@@ -7,14 +7,15 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v1
-      - name: COS
-        uses: TencentCloud/cos-action@v1
-        with:
-          secret_id: ${{ secrets.SecretId }}
-          secret_key: ${{ secrets.SecretKey }}
-          cos_bucket: lyleshaw-1253612989
-          cos_region: ap-shanghai
-          local_path: build
-          remote_path: .
-          clean: true
+    - uses: actions/checkout@v1
+    - name: Install coscmd
+      run: sudo pip install coscmd
+    - name: Configure coscmd
+      env:
+        SECRET_ID: ${{ secrets.SecretId }}
+        SECRET_KEY: ${{ secrets.SecretKey }}
+        BUCKET: lyleshaw-1253612989
+        REGION: ap-shanghai
+      run: coscmd config -a $SECRET_ID -s $SECRET_KEY -b $BUCKET -r $REGION
+    - name: Upload
+      run: coscmd upload -rs --delete -f ./ / --ignore "./.github/*"
