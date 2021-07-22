@@ -2,99 +2,99 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Tags on Lyle&#39;s Blog</title>
-    <link>https://lyleshaw.github.io/blog/tags/</link>
+    <link>https://lyleshaw.com/tags/</link>
     <description>Recent content in Tags on Lyle&#39;s Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
     <copyright>&lt;a href=&#34;https://creativecommons.org/licenses/by-nc/4.0/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;CC BY-NC 4.0&lt;/a&gt;</copyright>
-    <lastBuildDate>Tue, 20 Oct 2020 14:09:21 +0800</lastBuildDate><atom:link href="https://lyleshaw.github.io/blog/tags/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Tue, 20 Oct 2020 14:09:21 +0800</lastBuildDate><atom:link href="https://lyleshaw.com/tags/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>robot</title>
-      <link>https://lyleshaw.github.io/blog/tags/robot/</link>
+      <link>https://lyleshaw.com/tags/robot/</link>
       <pubDate>Tue, 20 Oct 2020 14:09:21 +0800</pubDate>
       
-      <guid>https://lyleshaw.github.io/blog/tags/robot/</guid>
+      <guid>https://lyleshaw.com/tags/robot/</guid>
       <description></description>
     </item>
     
     <item>
       <title>WeChat</title>
-      <link>https://lyleshaw.github.io/blog/tags/wechat/</link>
+      <link>https://lyleshaw.com/tags/wechat/</link>
       <pubDate>Tue, 20 Oct 2020 14:09:21 +0800</pubDate>
       
-      <guid>https://lyleshaw.github.io/blog/tags/wechat/</guid>
+      <guid>https://lyleshaw.com/tags/wechat/</guid>
       <description></description>
     </item>
     
     <item>
       <title>微信</title>
-      <link>https://lyleshaw.github.io/blog/tags/%E5%BE%AE%E4%BF%A1/</link>
+      <link>https://lyleshaw.com/tags/%E5%BE%AE%E4%BF%A1/</link>
       <pubDate>Tue, 20 Oct 2020 14:09:21 +0800</pubDate>
       
-      <guid>https://lyleshaw.github.io/blog/tags/%E5%BE%AE%E4%BF%A1/</guid>
+      <guid>https://lyleshaw.com/tags/%E5%BE%AE%E4%BF%A1/</guid>
       <description></description>
     </item>
     
     <item>
       <title>机器人</title>
-      <link>https://lyleshaw.github.io/blog/tags/%E6%9C%BA%E5%99%A8%E4%BA%BA/</link>
+      <link>https://lyleshaw.com/tags/%E6%9C%BA%E5%99%A8%E4%BA%BA/</link>
       <pubDate>Tue, 20 Oct 2020 14:09:21 +0800</pubDate>
       
-      <guid>https://lyleshaw.github.io/blog/tags/%E6%9C%BA%E5%99%A8%E4%BA%BA/</guid>
+      <guid>https://lyleshaw.com/tags/%E6%9C%BA%E5%99%A8%E4%BA%BA/</guid>
       <description></description>
     </item>
     
     <item>
       <title>PyTorch</title>
-      <link>https://lyleshaw.github.io/blog/tags/pytorch/</link>
+      <link>https://lyleshaw.com/tags/pytorch/</link>
       <pubDate>Thu, 24 Sep 2020 18:42:36 +0800</pubDate>
       
-      <guid>https://lyleshaw.github.io/blog/tags/pytorch/</guid>
+      <guid>https://lyleshaw.com/tags/pytorch/</guid>
       <description></description>
     </item>
     
     <item>
       <title>机器学习</title>
-      <link>https://lyleshaw.github.io/blog/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/</link>
+      <link>https://lyleshaw.com/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/</link>
       <pubDate>Thu, 24 Sep 2020 18:42:36 +0800</pubDate>
       
-      <guid>https://lyleshaw.github.io/blog/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/</guid>
+      <guid>https://lyleshaw.com/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/</guid>
       <description></description>
     </item>
     
     <item>
       <title>规划总结</title>
-      <link>https://lyleshaw.github.io/blog/tags/%E8%A7%84%E5%88%92%E6%80%BB%E7%BB%93/</link>
+      <link>https://lyleshaw.com/tags/%E8%A7%84%E5%88%92%E6%80%BB%E7%BB%93/</link>
       <pubDate>Tue, 01 Sep 2020 21:26:13 +0800</pubDate>
       
-      <guid>https://lyleshaw.github.io/blog/tags/%E8%A7%84%E5%88%92%E6%80%BB%E7%BB%93/</guid>
+      <guid>https://lyleshaw.com/tags/%E8%A7%84%E5%88%92%E6%80%BB%E7%BB%93/</guid>
       <description></description>
     </item>
     
     <item>
       <title>世界观</title>
-      <link>https://lyleshaw.github.io/blog/tags/%E4%B8%96%E7%95%8C%E8%A7%82/</link>
+      <link>https://lyleshaw.com/tags/%E4%B8%96%E7%95%8C%E8%A7%82/</link>
       <pubDate>Wed, 19 Aug 2020 23:00:23 +0800</pubDate>
       
-      <guid>https://lyleshaw.github.io/blog/tags/%E4%B8%96%E7%95%8C%E8%A7%82/</guid>
+      <guid>https://lyleshaw.com/tags/%E4%B8%96%E7%95%8C%E8%A7%82/</guid>
       <description></description>
     </item>
     
     <item>
       <title>生活琐事</title>
-      <link>https://lyleshaw.github.io/blog/tags/%E7%94%9F%E6%B4%BB%E7%90%90%E4%BA%8B/</link>
+      <link>https://lyleshaw.com/tags/%E7%94%9F%E6%B4%BB%E7%90%90%E4%BA%8B/</link>
       <pubDate>Wed, 19 Aug 2020 23:00:23 +0800</pubDate>
       
-      <guid>https://lyleshaw.github.io/blog/tags/%E7%94%9F%E6%B4%BB%E7%90%90%E4%BA%8B/</guid>
+      <guid>https://lyleshaw.com/tags/%E7%94%9F%E6%B4%BB%E7%90%90%E4%BA%8B/</guid>
       <description></description>
     </item>
     
     <item>
       <title>CS基础</title>
-      <link>https://lyleshaw.github.io/blog/tags/cs%E5%9F%BA%E7%A1%80/</link>
+      <link>https://lyleshaw.com/tags/cs%E5%9F%BA%E7%A1%80/</link>
       <pubDate>Fri, 14 Aug 2020 21:10:29 +0800</pubDate>
       
-      <guid>https://lyleshaw.github.io/blog/tags/cs%E5%9F%BA%E7%A1%80/</guid>
+      <guid>https://lyleshaw.com/tags/cs%E5%9F%BA%E7%A1%80/</guid>
       <description></description>
     </item>
     
