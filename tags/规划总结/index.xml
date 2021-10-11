@@ -2,18 +2,18 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>规划总结 on Lyle&#39;s Blog</title>
-    <link>https://www.lyleshaw.com/tags/%E8%A7%84%E5%88%92%E6%80%BB%E7%BB%93/</link>
+    <link>https://lyleshaw.com/tags/%E8%A7%84%E5%88%92%E6%80%BB%E7%BB%93/</link>
     <description>Recent content in 规划总结 on Lyle&#39;s Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
     <copyright>&lt;a href=&#34;https://creativecommons.org/licenses/by-nc/4.0/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;CC BY-NC 4.0&lt;/a&gt;</copyright>
-    <lastBuildDate>Tue, 01 Sep 2020 21:26:13 +0800</lastBuildDate><atom:link href="https://www.lyleshaw.com/tags/%E8%A7%84%E5%88%92%E6%80%BB%E7%BB%93/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Tue, 01 Sep 2020 21:26:13 +0800</lastBuildDate><atom:link href="https://lyleshaw.com/tags/%E8%A7%84%E5%88%92%E6%80%BB%E7%BB%93/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>2020暑假总结</title>
-      <link>https://www.lyleshaw.com/life/2020-sunmmer-vacation-summary/</link>
+      <link>https://lyleshaw.com/life/2020-sunmmer-vacation-summary/</link>
       <pubDate>Tue, 01 Sep 2020 21:26:13 +0800</pubDate>
       
-      <guid>https://www.lyleshaw.com/life/2020-sunmmer-vacation-summary/</guid>
+      <guid>https://lyleshaw.com/life/2020-sunmmer-vacation-summary/</guid>
       <description>Part1 · 计划完成度  FastAPI+ORM学习，完成开发基于短信的To-Do List提醒 / 初步完成 完成《统计学习方法》与《PyTorch实战》阅读 / 完成《PyTorch实战》 完成集智数学基础课程学习 / 完成度低 盈利超过4k / 亏损 完成Vue.js+Boostrap简单应用学习，并将社交项目推进至1/10（完成后台部分开发及部分前端页面）/ 无进度  Part2 · 总结回顾 这可能是我最为颓废的一个假期，因想专心看书补基础而放弃留杭与实习选择回家，但是最终却几乎整整看了一个月的小说。
 没有任何一个深入研究的方向，仅仅只是在表层的实现了todo项目的几个crud函数。
 这个假期无疑是失败的。</description>
@@ -21,10 +21,10 @@
     
     <item>
       <title>2020下半年书单记录（更新中）</title>
-      <link>https://www.lyleshaw.com/life/the-booklist-of-the-rest-of-2020/</link>
+      <link>https://lyleshaw.com/life/the-booklist-of-the-rest-of-2020/</link>
       <pubDate>Thu, 13 Aug 2020 19:19:55 +0800</pubDate>
       
-      <guid>https://www.lyleshaw.com/life/the-booklist-of-the-rest-of-2020/</guid>
+      <guid>https://lyleshaw.com/life/the-booklist-of-the-rest-of-2020/</guid>
       <description>书籍类  一百个人的十年 疯狂的投资：跨越大西洋电缆的商业传奇 民主的奇迹： 美国宪法制定的127天  论文类 </description>
     </item>
     

@@ -3,58 +3,58 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
-    <loc>https://www.lyleshaw.com/fr/categories/</loc>
+    <loc>https://lyleshaw.com/fr/categories/</loc>
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="https://www.lyleshaw.com/categories/"
+                href="https://lyleshaw.com/categories/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="fr"
-                href="https://www.lyleshaw.com/fr/categories/"
+                href="https://lyleshaw.com/fr/categories/"
                 />
   </url>
   
   <url>
-    <loc>https://www.lyleshaw.com/fr/</loc>
+    <loc>https://lyleshaw.com/fr/</loc>
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="https://www.lyleshaw.com/"
+                href="https://lyleshaw.com/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="fr"
-                href="https://www.lyleshaw.com/fr/"
+                href="https://lyleshaw.com/fr/"
                 />
   </url>
   
   <url>
-    <loc>https://www.lyleshaw.com/fr/series/</loc>
+    <loc>https://lyleshaw.com/fr/series/</loc>
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="https://www.lyleshaw.com/series/"
+                href="https://lyleshaw.com/series/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="fr"
-                href="https://www.lyleshaw.com/fr/series/"
+                href="https://lyleshaw.com/fr/series/"
                 />
   </url>
   
   <url>
-    <loc>https://www.lyleshaw.com/fr/tags/</loc>
+    <loc>https://lyleshaw.com/fr/tags/</loc>
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="https://www.lyleshaw.com/tags/"
+                href="https://lyleshaw.com/tags/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="fr"
-                href="https://www.lyleshaw.com/fr/tags/"
+                href="https://lyleshaw.com/fr/tags/"
                 />
   </url>
   
