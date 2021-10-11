@@ -2,18 +2,18 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>WeChat on Lyle&#39;s Blog</title>
-    <link>https://lyleshaw.com/tags/wechat/</link>
+    <link>https://www.lyleshaw.com/tags/wechat/</link>
     <description>Recent content in WeChat on Lyle&#39;s Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
     <copyright>&lt;a href=&#34;https://creativecommons.org/licenses/by-nc/4.0/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;CC BY-NC 4.0&lt;/a&gt;</copyright>
-    <lastBuildDate>Tue, 20 Oct 2020 14:09:21 +0800</lastBuildDate><atom:link href="https://lyleshaw.com/tags/wechat/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Tue, 20 Oct 2020 14:09:21 +0800</lastBuildDate><atom:link href="https://www.lyleshaw.com/tags/wechat/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>微信机器人踩坑记录</title>
-      <link>https://lyleshaw.com/tech/wechat-bot/</link>
+      <link>https://www.lyleshaw.com/tech/wechat-bot/</link>
       <pubDate>Tue, 20 Oct 2020 14:09:21 +0800</pubDate>
       
-      <guid>https://lyleshaw.com/tech/wechat-bot/</guid>
+      <guid>https://www.lyleshaw.com/tech/wechat-bot/</guid>
       <description>本文首发于https://lyleshaw.com/tech/wechat-bot/
 最近接了个做微信社群运营机器人的单，本来以为很简单框架很多来着，结果没想到断断续续搞了小两个星期，写篇博客记录一下踩坑的记录。
  序 首先我大致了解了一下和微信通讯的方式，主要分以下几种方式：

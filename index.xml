@@ -2,18 +2,18 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Lyle&#39;s Blog</title>
-    <link>https://lyleshaw.com/</link>
+    <link>https://www.lyleshaw.com/</link>
     <description>Recent content on Lyle&#39;s Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
     <copyright>&lt;a href=&#34;https://creativecommons.org/licenses/by-nc/4.0/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;CC BY-NC 4.0&lt;/a&gt;</copyright>
-    <lastBuildDate>Tue, 20 Oct 2020 14:09:21 +0800</lastBuildDate><atom:link href="https://lyleshaw.com/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Tue, 20 Oct 2020 14:09:21 +0800</lastBuildDate><atom:link href="https://www.lyleshaw.com/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>微信机器人踩坑记录</title>
-      <link>https://lyleshaw.com/tech/wechat-bot/</link>
+      <link>https://www.lyleshaw.com/tech/wechat-bot/</link>
       <pubDate>Tue, 20 Oct 2020 14:09:21 +0800</pubDate>
       
-      <guid>https://lyleshaw.com/tech/wechat-bot/</guid>
+      <guid>https://www.lyleshaw.com/tech/wechat-bot/</guid>
       <description>本文首发于https://lyleshaw.com/tech/wechat-bot/
 最近接了个做微信社群运营机器人的单，本来以为很简单框架很多来着，结果没想到断断续续搞了小两个星期，写篇博客记录一下踩坑的记录。
  序 首先我大致了解了一下和微信通讯的方式，主要分以下几种方式：
@@ -40,10 +40,10 @@ hook之一 我最早看到的是这一篇https://zhuanlan.zhihu.com/p/114214846�
     
     <item>
       <title>PyTorch使用指南——pytorch安装</title>
-      <link>https://lyleshaw.com/tech/install-pytorch/</link>
+      <link>https://www.lyleshaw.com/tech/install-pytorch/</link>
       <pubDate>Thu, 24 Sep 2020 18:42:36 +0800</pubDate>
       
-      <guid>https://lyleshaw.com/tech/install-pytorch/</guid>
+      <guid>https://www.lyleshaw.com/tech/install-pytorch/</guid>
       <description>本文首发于https://lyleshaw.com/tech/wechat-bot/
 最近好几个朋友在问pytorch安装的问题，总结了一下，大家好像都是【超时】和【路径】问题，因此在整个系列前些个0篇，介绍pytorch安装中的各种坑
  Q0 一些小问题 有朋友首先问了我这个问题&amp;hellip;这个需要明确一个前提，即pytorch在pip中实际上并不叫pytorch，直接pip install pytorch是会报错的，应该使用官网安装命令完成安装。
@@ -68,10 +68,10 @@ Q3 安装成功却无法import？路径错误 如果您出现内容，您可以�
     
     <item>
       <title>2020暑假总结</title>
-      <link>https://lyleshaw.com/life/2020-sunmmer-vacation-summary/</link>
+      <link>https://www.lyleshaw.com/life/2020-sunmmer-vacation-summary/</link>
       <pubDate>Tue, 01 Sep 2020 21:26:13 +0800</pubDate>
       
-      <guid>https://lyleshaw.com/life/2020-sunmmer-vacation-summary/</guid>
+      <guid>https://www.lyleshaw.com/life/2020-sunmmer-vacation-summary/</guid>
       <description>Part1 · 计划完成度  FastAPI+ORM学习，完成开发基于短信的To-Do List提醒 / 初步完成 完成《统计学习方法》与《PyTorch实战》阅读 / 完成《PyTorch实战》 完成集智数学基础课程学习 / 完成度低 盈利超过4k / 亏损 完成Vue.js+Boostrap简单应用学习，并将社交项目推进至1/10（完成后台部分开发及部分前端页面）/ 无进度  Part2 · 总结回顾 这可能是我最为颓废的一个假期，因想专心看书补基础而放弃留杭与实习选择回家，但是最终却几乎整整看了一个月的小说。
 没有任何一个深入研究的方向，仅仅只是在表层的实现了todo项目的几个crud函数。
 这个假期无疑是失败的。</description>
@@ -79,20 +79,20 @@ Q3 安装成功却无法import？路径错误 如果您出现内容，您可以�
     
     <item>
       <title>世界观之——和C的聊天记录</title>
-      <link>https://lyleshaw.com/life/worldview1/</link>
+      <link>https://www.lyleshaw.com/life/worldview1/</link>
       <pubDate>Wed, 19 Aug 2020 23:00:23 +0800</pubDate>
       
-      <guid>https://lyleshaw.com/life/worldview1/</guid>
+      <guid>https://www.lyleshaw.com/life/worldview1/</guid>
       <description> 因为某C朋友的好奇，聊了聊关于我的世界观，因见识与阅历存在疏漏，如有见解还望指出。截图已获对方允许。
  </description>
     </item>
     
     <item>
       <title>PyTorch使用指南——数据引入</title>
-      <link>https://lyleshaw.com/tech/import-data/</link>
+      <link>https://www.lyleshaw.com/tech/import-data/</link>
       <pubDate>Mon, 17 Aug 2020 22:36:36 +0800</pubDate>
       
-      <guid>https://lyleshaw.com/tech/import-data/</guid>
+      <guid>https://www.lyleshaw.com/tech/import-data/</guid>
       <description>本文首发于https://lyleshaw.com/tech/wechat-bot/
  导入包 首先来一段正常的导入包代码，我将每个包的功能注释到代码后
 import torch # 引入Torch，没啥可说的 import torch.nn as nn # 引入神经网络模块，模型的定义需要用到nn.Model模块 import torch.nn.functional as F # 函数模块，包括机器学习里常用的一些计算函数 import pandas as pd #pandas，用来导入导出数据文件并做一定程度上的清洗 import numpy as np # numpy，python最好的科学计算库，常用在矩阵计算等 from torch.utils.data import * # 这个模块是数据相关的一些操作 from torch.autograd import Variable # variable函数是将tensor转化为可微分的variable类型 import torchvision # 这里面是一些计算机视觉常用的包和函数，一些 import matplotlib.pyplot as plt # plt画图用 import torch.optim as optim # 优化模块，有很多优化器，Adam、SGD等 from torch.utils.data import Dataset # 数据集操作 from torchvision import transforms, datasets, models # transforms是对数据进行totensor，归一化等等操作的包  可以根据不同任务的实际情况选择调用哪些包</description>
@@ -100,10 +100,10 @@ import torch # 引入Torch，没啥可说的 import torch.nn as nn # 引入神�
     
     <item>
       <title>PyTorch使用指南</title>
-      <link>https://lyleshaw.com/tech/pytorch-guide/</link>
+      <link>https://www.lyleshaw.com/tech/pytorch-guide/</link>
       <pubDate>Mon, 17 Aug 2020 22:16:47 +0800</pubDate>
       
-      <guid>https://lyleshaw.com/tech/pytorch-guide/</guid>
+      <guid>https://www.lyleshaw.com/tech/pytorch-guide/</guid>
       <description>本文首发于https://lyleshaw.com/tech/wechat-bot/
  为什么我要写这些？ 这将是一个系列的长文，我希望通过撰写这些文章使得一个对深度学习原理有一定理解的人快速上手pytorch。
 在深度学习建模方面的框架主要为tensorflow和pytorch，前者虽然在前些年占据优势，但是更适合工业级的部署任务，其计算图和仿佛在python里重构了一门新语言的设计非常劝退新手。相比之下，pytorch就更适合入门了。
@@ -115,10 +115,10 @@ import torch # 引入Torch，没啥可说的 import torch.nn as nn # 引入神�
     
     <item>
       <title>2020.08.14-LeetCode刷题总结</title>
-      <link>https://lyleshaw.com/tech/0814-lc/</link>
+      <link>https://www.lyleshaw.com/tech/0814-lc/</link>
       <pubDate>Fri, 14 Aug 2020 21:10:29 +0800</pubDate>
       
-      <guid>https://lyleshaw.com/tech/0814-lc/</guid>
+      <guid>https://www.lyleshaw.com/tech/0814-lc/</guid>
       <description>第一篇刷题总结，内容可能不够完善。
  题目 LeetCode 72题：编辑距离
 给你两个单词 word1 和 word2，请你计算出将 word1 转换成 word2 所使用的最少操作数 。 你可以对一个单词进行如下三种操作： 插入一个字符 删除一个字符 替换一个字符 示例 1： 输入：word1 = &amp;quot;horse&amp;quot;, word2 = &amp;quot;ros&amp;quot; 输出：3 解释： horse -&amp;gt; rorse (将 &#39;h&#39; 替换为 &#39;r&#39;) rorse -&amp;gt; rose (删除 &#39;r&#39;) rose -&amp;gt; ros (删除 &#39;e&#39;) 示例 2： 输入：word1 = &amp;quot;intention&amp;quot;, word2 = &amp;quot;execution&amp;quot; 输出：5 解释： intention -&amp;gt; inention (删除 &#39;t&#39;) inention -&amp;gt; enention (将 &#39;i&#39; 替换为 &#39;e&#39;) enention -&amp;gt; exention (将 &#39;n&#39; 替换为 &#39;x&#39;) exention -&amp;gt; exection (将 &#39;n&#39; 替换为 &#39;c&#39;) exection -&amp;gt; execution (插入 &#39;u&#39;) 思路 这并不是一道非常难的动态规划题。</description>
@@ -126,19 +126,19 @@ import torch # 引入Torch，没啥可说的 import torch.nn as nn # 引入神�
     
     <item>
       <title>2020下半年书单记录（更新中）</title>
-      <link>https://lyleshaw.com/life/the-booklist-of-the-rest-of-2020/</link>
+      <link>https://www.lyleshaw.com/life/the-booklist-of-the-rest-of-2020/</link>
       <pubDate>Thu, 13 Aug 2020 19:19:55 +0800</pubDate>
       
-      <guid>https://lyleshaw.com/life/the-booklist-of-the-rest-of-2020/</guid>
+      <guid>https://www.lyleshaw.com/life/the-booklist-of-the-rest-of-2020/</guid>
       <description>书籍类  一百个人的十年 疯狂的投资：跨越大西洋电缆的商业传奇 民主的奇迹： 美国宪法制定的127天  论文类 </description>
     </item>
     
     <item>
       <title>为什么我需要一个博客</title>
-      <link>https://lyleshaw.com/life/why-we-need-blogs/</link>
+      <link>https://www.lyleshaw.com/life/why-we-need-blogs/</link>
       <pubDate>Wed, 12 Aug 2020 18:53:19 +0800</pubDate>
       
-      <guid>https://lyleshaw.com/life/why-we-need-blogs/</guid>
+      <guid>https://www.lyleshaw.com/life/why-we-need-blogs/</guid>
       <description>历史 最早接触建站是在2013年，当时还是初二的我斥巨资（就当时而言）买入了一个域名ycwl.pw，然后在此基础上折腾过一段时间的discuz和wordpress，甚至还帮其他人做过一些小网页赚过十几块钱。
 然而当时无非是在html模版的基础上改些小地方，还记得当时那简陋的dreamwear，并没有深入去学JavaScript或PHP，期间多次想坚持写个blog，可似乎最长的一次也不过坚持了一两个月便放弃了，甚至现在连数据都丢失掉了。
 大学之后，觉得闲置lyleshaw.com这个域名有些浪费，因此又重新用wordpress建了个blog，但是时隔半年却一篇产出都没有&amp;hellip;
@@ -155,10 +155,10 @@ blog的定位也很独特，你不会寄希望于自己的blog拥有与微信公
     
     <item>
       <title>关于</title>
-      <link>https://lyleshaw.com/about/</link>
+      <link>https://www.lyleshaw.com/about/</link>
       <pubDate>Wed, 12 Aug 2020 18:52:57 +0800</pubDate>
       
-      <guid>https://lyleshaw.com/about/</guid>
+      <guid>https://www.lyleshaw.com/about/</guid>
       <description>你好，每一个看到这个页面的人。
  About Me 我是lyle，目前某双非大二计算机在读，现居杭州。
 技术栈：    语言&amp;amp;框架 介绍 掌握程度     python  较为熟练，三年经验   ············pandas 数据处理&amp;amp;清洗框架 基本掌握大部分函数   ············pytorch 深度学习建模框架 能调用中级模型，可以初步实现自定义模型   ············requests HTTP请求框架&amp;amp;爬虫 能够爬取大部分简单页面，但对多线程及登录理解不深   ············fastapi 后端开发 初步实现增删查改及orm操作，对中间件理解不深   C ··· 大部分来自大学C语言程序设计课，初步使用   pascal ··· 来自初中NOIP经历，较为熟悉   Go ··· 因社团而学习，目前能够看懂但实践较难    
