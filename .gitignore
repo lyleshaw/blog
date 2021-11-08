@@ -18,3 +18,7 @@ _book
 public
 resources
 .DS_Store
+.Archive/
+.markeditor/
+*.json
+*.sqlite3
