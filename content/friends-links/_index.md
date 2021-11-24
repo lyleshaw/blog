@@ -12,3 +12,4 @@ date: 2020-09-13T22:37:36+08:00
 |付怡青|·|[http://fuyiqing.net/](http://fuyiqing.net/)|·|**swift大佬**|
 |GreenHaTeam|·|[http://greenhateam.top/](http://greenhateam.top/)|·|**绿帽安全团队**|
 |Super-Saiyan-One|·|[https://s-fdy.top/](https://s-fdy.top/)|·|**小帅哥**|
+|Ek1ng's Blog|·|[https://ek1ng.com/](https://ek1ng.com/)|·|**学弟的博客，关注前端+安全**|
