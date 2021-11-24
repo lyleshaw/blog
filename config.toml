@@ -1,4 +1,4 @@
-baseURL = "https://lyleshaw.com"
+baseURL = "https://lyle.net.cn"
 title = "Lyle's Blog"
 languageCode = "zh-CN"
 theme = "hello-friend-ng"
@@ -37,7 +37,7 @@ disableHugoGeneratorInject = false
   posts = "/posts/:year/:month/:title/"
 
 [author]
-  name = "lyleshaw"
+  name = "lyle"
 
 [blackfriday]
   hrefTargetBlank = true
@@ -69,11 +69,11 @@ disableHugoGeneratorInject = false
   dateformNumTime = "2006-01-02 15:04 -0700"
 
   # Metadata mostly used in document's head
-  description = "Lyle所书所写之地."
+  description = "Lyle 所书所写之地."
   keywords = ""
   images = [""]
 
-  homeSubtitle = "Lyle所书所写之地."
+  homeSubtitle = "Lyle 所书所写之地."
 
   # Prefix of link to the git commit detail page. GitInfo must be enabled.
   # gitUrl = ""
