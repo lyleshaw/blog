@@ -35,24 +35,6 @@
     
     <item>
       <title>写在21岁</title>
-      <link>/life/birthday-21/</link>
-      <pubDate>Tue, 09 Nov 2021 23:10:10 +0800</pubDate>
-      
-      <guid>/life/birthday-21/</guid>
-      <description>又到了过生日的时候，我对生日的激情可能自高中起便逐渐消磨掉了。初中的生日可以期待一顿巴奴火锅（虽然生日的主角变成了我的表弟让我很不舒服），自高中住校起便没再好好过过一个生日了。大部分时候的生日，与平淡无奇的其他日子并无不同，即便是 18 岁生日，我也只是在校外吃了顿烤肉拌饭——或许加了杯冰红茶。
-我似乎会下意识的认为只要忽略掉生日这件事就可以假装并没有长大，但是事实上——我已经 21 岁了。这样的年龄在我 13 岁时是难以想象的大，但是真的走到了今天，却好像还是那么的&amp;hellip;平平无奇。
-好吧，简单回顾一下略显失败的 20 岁：在北京呆了一个月；做了一点开源；对计算机的理解更深了；学了一点后端；学习了几个模型与方法；成功苟过了 70+ 学分的大二生活；从学校搬出来住；在 20 岁的末尾开始认真看书学习 因果推断（causal inference）；从坚定又变得迷茫；胖了很多
-虽然一直有定期自省，但是近期逐渐意识到我曾经对自己的认知有很大局限与偏差，从坚定的知道我想要什么到我想要的真的是这些以及我的方法真的正确吗的自疑。同时还观测到一点（可能存在的）勇气的减少。这二者令我对自己很忧虑。希望新的一岁我可以拥有更多自省的时间并做出改变。
-还令我感到忧虑的是，我似乎相比一年前更难沉下心来看书了。这可能由于对书质量的要求的提高与杂事太多。但我希望新的一岁中的我可以更沉下心来做深入的东西。
-至于生活上，我确实该减肥了&amp;hellip;曾经很多次作出这样的决策，但总是被中断。过去一岁是我历史上去医院次数最多也是身体最差的一次（整整难受了一个月）。希望新的一岁变得自律且坚持。
-显然，相比无规律 / 被突发事件填满的生活，我更喜欢过规律 / 但不缺乏新鲜的生活。我为制订能平衡规律与创新的计划努力了许多年，但从没有像如今一样需要这样的计划（因为自己独居且课程极少）。希望我能成功。
-可能是因为我许久许久（大约一年多）没有写过博客的缘故，我好像又扯了很多废话，也希望新的一岁能坚持更新博客吧！
-祝我生日快乐。
-lyle 于杭州 2021.11.09.00-00</description>
-    </item>
-    
-    <item>
-      <title>写在21岁</title>
       <link>/life/21-birthday/</link>
       <pubDate>Tue, 09 Nov 2021 00:06:38 +0800</pubDate>
       
@@ -172,6 +154,17 @@ import torch # 引入Torch，没啥可说的 import torch.nn as nn # 引入神�
 这个系列会有哪些模块？ 我会分以下模块分别写文章来解释及列出常见错误原因：
  Torch安装 数据引入 数据清洗 模型设计 模型运行 模型保存&amp;amp;调用 模型优化  参考 [1.] 常用代码片段. Lyle. https://github.com/lyleshaw/Frequently-used-Python-code.
 [2.] PyTorch 模型训练实用教程. 余霆嵩.</description>
+    </item>
+    
+    <item>
+      <title>2020.08.14-LeetCode刷题总结</title>
+      <link>/tech/0814-lc/</link>
+      <pubDate>Fri, 14 Aug 2020 21:10:29 +0800</pubDate>
+      
+      <guid>/tech/0814-lc/</guid>
+      <description>第一篇刷题总结，内容可能不够完善。
+ 题目 LeetCode 72题：编辑距离
+给你两个单词 word1 和 word2，请你计算出将 word1 转换成 word2 所使用的最少操作数 。 你可以对一个单词进行如下三种操作： 插入一个字符 删除一个字符 替换一个字符 示例 1： 输入：word1 = &amp;quot;horse&amp;quot;, word2 = &amp;quot;ros&amp;quot; 输出：3 解释： horse -&amp;gt; rorse (将 &#39;h&#39; 替换为 &#39;r&#39;) rorse -&amp;gt; rose (删除 &#39;r&#39;) rose -&amp;gt; ros (删除 &#39;e&#39;) 示例 2： 输入：word1 = &amp;quot;intention&amp;quot;, word2 = &amp;quot;execution&amp;quot; 输出：5 解释： intention -&amp;gt; inention (删除 &#39;t&#39;) inention -&amp;gt; enention (将 &#39;i&#39; 替换为 &#39;e&#39;) enention -&amp;gt; exention (将 &#39;n&#39; 替换为 &#39;x&#39;) exention -&amp;gt; exection (将 &#39;n&#39; 替换为 &#39;c&#39;) exection -&amp;gt; execution (插入 &#39;u&#39;) 思路 这并不是一道非常难的动态规划题。</description>
     </item>
     
   </channel>
