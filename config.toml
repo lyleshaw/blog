@@ -127,7 +127,7 @@ disableHugoGeneratorInject = false
   #   url  = "https://twitter.com/"
   [[params.social]]
     name = "email"
-    url = "mailto:x@lyleshaw.com"
+    url = "mailto:me@lyle.net.cn"
 
   # [[params.social]]
   #   name = "qq"
