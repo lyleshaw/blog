@@ -171,6 +171,10 @@ disableHugoGeneratorInject = false
     name       = "关于"
     url        = "about"
   [[menu.main]]
+    identifier = "CV"
+    name       = "简历"
+    url        = "Resume_ZH_EN_public_version.pdf"
+  [[menu.main]]
       url = "/tags/"
       name = "标签"
       pre = "internal"
