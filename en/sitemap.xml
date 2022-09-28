@@ -3,215 +3,215 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
-    <loc>https://lyle.net.cn/life/2021-summary/</loc>
+    <loc>/life/2021-summary/</loc>
     <lastmod>2021-12-31T22:01:26+08:00</lastmod>
   </url>
   
   <url>
-    <loc>https://lyle.net.cn/</loc>
-    <lastmod>2021-12-31T22:01:26+08:00</lastmod>
-    <xhtml:link
-                rel="alternate"
-                hreflang="fr"
-                href="https://lyle.net.cn/fr/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="en"
-                href="https://lyle.net.cn/"
-                />
-  </url>
-  
-  <url>
-    <loc>https://lyle.net.cn/tags/</loc>
+    <loc>/</loc>
     <lastmod>2021-12-31T22:01:26+08:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="fr"
-                href="https://lyle.net.cn/fr/tags/"
+                href="/fr/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="https://lyle.net.cn/tags/"
+                href="/"
                 />
   </url>
   
   <url>
-    <loc>https://lyle.net.cn/tags/%E7%94%9F%E6%B4%BB%E7%90%90%E4%BA%8B/</loc>
+    <loc>/tags/</loc>
+    <lastmod>2021-12-31T22:01:26+08:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="fr"
+                href="/fr/tags/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="/tags/"
+                />
+  </url>
+  
+  <url>
+    <loc>/tags/%E7%94%9F%E6%B4%BB%E7%90%90%E4%BA%8B/</loc>
     <lastmod>2021-12-31T22:01:26+08:00</lastmod>
   </url>
   
   <url>
-    <loc>https://lyle.net.cn/tags/%E8%A7%84%E5%88%92%E6%80%BB%E7%BB%93/</loc>
+    <loc>/tags/%E8%A7%84%E5%88%92%E6%80%BB%E7%BB%93/</loc>
     <lastmod>2021-12-31T22:01:26+08:00</lastmod>
   </url>
   
   <url>
-    <loc>https://lyle.net.cn/tags/alert/</loc>
+    <loc>/tags/alert/</loc>
     <lastmod>2021-11-24T08:11:02+08:00</lastmod>
   </url>
   
   <url>
-    <loc>https://lyle.net.cn/tech/how-to-select-a-alert-server/</loc>
+    <loc>/tech/how-to-select-a-alert-server/</loc>
     <lastmod>2021-11-24T08:11:02+08:00</lastmod>
   </url>
   
   <url>
-    <loc>https://lyle.net.cn/tags/%E6%B6%88%E6%81%AF%E6%8F%90%E9%86%92/</loc>
+    <loc>/tags/%E6%B6%88%E6%81%AF%E6%8F%90%E9%86%92/</loc>
     <lastmod>2021-11-24T08:11:02+08:00</lastmod>
   </url>
   
   <url>
-    <loc>https://lyle.net.cn/life/birthday-21/</loc>
+    <loc>/life/birthday-21/</loc>
     <lastmod>2021-11-09T23:10:10+08:00</lastmod>
   </url>
   
   <url>
-    <loc>https://lyle.net.cn/tags/%E7%94%9F%E6%97%A5/</loc>
+    <loc>/tags/%E7%94%9F%E6%97%A5/</loc>
     <lastmod>2021-11-09T23:10:10+08:00</lastmod>
   </url>
   
   <url>
-    <loc>https://lyle.net.cn/life/21-birthday/</loc>
+    <loc>/life/21-birthday/</loc>
     <lastmod>2021-11-09T00:06:38+08:00</lastmod>
   </url>
   
   <url>
-    <loc>https://lyle.net.cn/tags/robot/</loc>
+    <loc>/tags/robot/</loc>
     <lastmod>2020-10-20T14:09:21+08:00</lastmod>
   </url>
   
   <url>
-    <loc>https://lyle.net.cn/tags/wechat/</loc>
+    <loc>/tags/wechat/</loc>
     <lastmod>2020-10-20T14:09:21+08:00</lastmod>
   </url>
   
   <url>
-    <loc>https://lyle.net.cn/tags/%E5%BE%AE%E4%BF%A1/</loc>
+    <loc>/tags/%E5%BE%AE%E4%BF%A1/</loc>
     <lastmod>2020-10-20T14:09:21+08:00</lastmod>
   </url>
   
   <url>
-    <loc>https://lyle.net.cn/tech/wechat-bot/</loc>
+    <loc>/tech/wechat-bot/</loc>
     <lastmod>2020-10-20T14:09:21+08:00</lastmod>
   </url>
   
   <url>
-    <loc>https://lyle.net.cn/tags/%E6%9C%BA%E5%99%A8%E4%BA%BA/</loc>
+    <loc>/tags/%E6%9C%BA%E5%99%A8%E4%BA%BA/</loc>
     <lastmod>2020-10-20T14:09:21+08:00</lastmod>
   </url>
   
   <url>
-    <loc>https://lyle.net.cn/tags/pytorch/</loc>
+    <loc>/tags/pytorch/</loc>
     <lastmod>2020-09-24T18:42:36+08:00</lastmod>
   </url>
   
   <url>
-    <loc>https://lyle.net.cn/tech/install-pytorch/</loc>
+    <loc>/tech/install-pytorch/</loc>
     <lastmod>2020-09-24T18:42:36+08:00</lastmod>
   </url>
   
   <url>
-    <loc>https://lyle.net.cn/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/</loc>
+    <loc>/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/</loc>
     <lastmod>2020-09-24T18:42:36+08:00</lastmod>
   </url>
   
   <url>
-    <loc>https://lyle.net.cn/friends-links/</loc>
+    <loc>/friends-links/</loc>
     <lastmod>2020-09-13T22:37:36+08:00</lastmod>
   </url>
   
   <url>
-    <loc>https://lyle.net.cn/life/2020-sunmmer-vacation-summary/</loc>
+    <loc>/life/2020-sunmmer-vacation-summary/</loc>
     <lastmod>2020-09-01T21:26:13+08:00</lastmod>
   </url>
   
   <url>
-    <loc>https://lyle.net.cn/tags/%E4%B8%96%E7%95%8C%E8%A7%82/</loc>
+    <loc>/tags/%E4%B8%96%E7%95%8C%E8%A7%82/</loc>
     <lastmod>2020-08-19T23:00:23+08:00</lastmod>
   </url>
   
   <url>
-    <loc>https://lyle.net.cn/life/worldview1/</loc>
+    <loc>/life/worldview1/</loc>
     <lastmod>2020-08-19T23:00:23+08:00</lastmod>
   </url>
   
   <url>
-    <loc>https://lyle.net.cn/tech/import-data/</loc>
+    <loc>/tech/import-data/</loc>
     <lastmod>2020-08-17T22:36:36+08:00</lastmod>
   </url>
   
   <url>
-    <loc>https://lyle.net.cn/tech/pytorch-guide/</loc>
+    <loc>/tech/pytorch-guide/</loc>
     <lastmod>2020-08-17T22:16:47+08:00</lastmod>
   </url>
   
   <url>
-    <loc>https://lyle.net.cn/tech/0814-lc/</loc>
+    <loc>/tech/0814-lc/</loc>
     <lastmod>2020-08-14T21:10:29+08:00</lastmod>
   </url>
   
   <url>
-    <loc>https://lyle.net.cn/tags/cs%E5%9F%BA%E7%A1%80/</loc>
+    <loc>/tags/cs%E5%9F%BA%E7%A1%80/</loc>
     <lastmod>2020-08-14T21:10:29+08:00</lastmod>
   </url>
   
   <url>
-    <loc>https://lyle.net.cn/tags/leetcode/</loc>
+    <loc>/tags/leetcode/</loc>
     <lastmod>2020-08-14T21:10:29+08:00</lastmod>
   </url>
   
   <url>
-    <loc>https://lyle.net.cn/life/the-booklist-of-the-rest-of-2020/</loc>
+    <loc>/life/the-booklist-of-the-rest-of-2020/</loc>
     <lastmod>2020-08-13T19:19:55+08:00</lastmod>
   </url>
   
   <url>
-    <loc>https://lyle.net.cn/life/why-we-need-blogs/</loc>
+    <loc>/life/why-we-need-blogs/</loc>
     <lastmod>2020-08-12T18:53:19+08:00</lastmod>
   </url>
   
   <url>
-    <loc>https://lyle.net.cn/tech/</loc>
+    <loc>/tech/</loc>
     <lastmod>2020-08-12T18:53:07+08:00</lastmod>
   </url>
   
   <url>
-    <loc>https://lyle.net.cn/life/</loc>
+    <loc>/life/</loc>
     <lastmod>2020-08-12T18:53:07+08:00</lastmod>
   </url>
   
   <url>
-    <loc>https://lyle.net.cn/about/</loc>
+    <loc>/about/</loc>
     <lastmod>2020-08-12T18:52:57+08:00</lastmod>
   </url>
   
   <url>
-    <loc>https://lyle.net.cn/categories/</loc>
+    <loc>/categories/</loc>
     <xhtml:link
                 rel="alternate"
                 hreflang="fr"
-                href="https://lyle.net.cn/fr/categories/"
+                href="/fr/categories/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="https://lyle.net.cn/categories/"
+                href="/categories/"
                 />
   </url>
   
   <url>
-    <loc>https://lyle.net.cn/series/</loc>
+    <loc>/series/</loc>
     <xhtml:link
                 rel="alternate"
                 hreflang="fr"
-                href="https://lyle.net.cn/fr/series/"
+                href="/fr/series/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="https://lyle.net.cn/series/"
+                href="/series/"
                 />
   </url>
   

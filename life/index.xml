@@ -2,18 +2,18 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>生活 on Lyle&#39;s Blog</title>
-    <link>https://lyle.net.cn/life/</link>
+    <link>/life/</link>
     <description>Recent content in 生活 on Lyle&#39;s Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
     <copyright>&lt;a href=&#34;https://creativecommons.org/licenses/by-nc/4.0/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;CC BY-NC 4.0&lt;/a&gt;</copyright>
-    <lastBuildDate>Wed, 12 Aug 2020 18:53:07 +0800</lastBuildDate><atom:link href="https://lyle.net.cn/life/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Wed, 12 Aug 2020 18:53:07 +0800</lastBuildDate><atom:link href="/life/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>2021 总结 &amp; 2022 展望</title>
-      <link>https://lyle.net.cn/life/2021-summary/</link>
+      <link>/life/2021-summary/</link>
       <pubDate>Fri, 31 Dec 2021 22:01:26 +0800</pubDate>
       
-      <guid>https://lyle.net.cn/life/2021-summary/</guid>
+      <guid>/life/2021-summary/</guid>
       <description>我大概是从 2013-2014 开始写 《xxxx 总结 &amp;amp; xxxx 展望》的，一直保持到 18 年，反而上大学后并没有保持这个习惯了。可能因为整个中学时期压抑的环境和氛围使得我疯狂的想记录下所有事情（以免未来的我遗忘掉这段时光）。而事实证明，大学安逸的环境确实会让我易于遗忘，不过还好有过去的记录帮我回忆。
 2021 或许会是一个新的开始，我在面临大学以来对自我最深入的一次反思和革新。当然，在阐述我现在的思考前，还是先回顾一下这一年吧：
  一月。愉快的开始后，惊险的度过期末且没有挂科。紧接着开始了约等于 9-10-6 的寒假爆肝：开会对需求、实现、调试、部署、对接&amp;hellip;花了大量时间在这个项目上，很感激学长帮助了我很多，也在他的帮助下快速熟悉了后端常用的那些技术。但是回过头来看，很难去评价这件事到底对我来说是好是坏。 二月。约等于一月，几乎全部精力都在肝项目上，同时在搞白细胞识别这边的模型。 三月。在历经与辅导员漫长的扯皮后，终于将我持续推进了半年多的校外住宿办妥。终于逃离了寝室那个环境，生活质量堪称飞跃，同时购入显示器等设备，提升自己的开发体验。 四月。又被交给了一个新的项目，被花了一个大饼，又付出了不少时间在上面，同时第一次亲自和学校那边对接，更深刻体会到某些校领导的&amp;hellip;无语。当然，这段时间事情相对少了很多，因此也得以有空在周末与朋友进城逛，很是开心。 五月。几位高中好友越好来杭州玩，作为陪游一起跟着逛了很多（我平常压根懒得去的）景点，只能说杭州五月份是真的热。月底，开始准备期末+开源之夏。 六月。事情逐渐多起来，略显烦躁，申报了开源之夏（Wechaty+MegEngine）两个项目，付出挂一科的代价成功保住了其他课。 七月。Wechaty 项目启动会上意外得知了一个暑期实习机会，刚好假期较为空闲，于是决定暑假前往北京。可是成功的被北京的生活（住宿及交通等）劝退，开始萌生退意。但老板+其他老师对我真的很好，非常感激。同时这次北京之行也让我认识了很多大佬（或者说只是混了个脸熟），也和很多朋友约了饭，这点让我非常开心。 八月。月初决定离开。10 号开始为了中期进度开始疯狂肝开源之夏。感谢 mentor 不嫌弃我，并手把手的教我一些比较深入的东西。我的 mentor 对我真的很好，会很好的引导我，适时的给我资料或引导，真的很感激他。中期验收过后整个人放松下来，开始大量的 kill time，甚至达成了在一天半内看完了约 10 部电影，真的是看的昏天黑地的。这种状态一直维持到了月底。 九月。由于状态一直很颓废，挂科补考理所当然的继续挂了（模电真的学不会）。中旬大约把开源之夏搞的差不多。我一直不愿意打疫苗，但是因为家里强迫所以还是打了。然而在杭州打完第二针后，我开始了长达一个月的不良反应。具体表现：偏头疼、头晕、无法直视光亮、无法下蹲、胸闷等。来来回回去了医院好几趟，神经内科挂了让我去心内科（因为检查出来高血压），心内科诊断完发现血压偏高但是并不是高血压，让我回神经内科。然鹅这断断续续折磨了我一个月的不良反应，莫名其妙的好了。不知道为什么会产生，同样不知道为什么消失，只是让我整个九月下旬到十月中旬都一事无成（强撑着完成了如开源之夏答辩等必要工作，同时欠下了海量的 bug 和作业）。 十月。在开头的难受过后，我迎来了大概是今年最舒适的一段时光。大部分事情已经处理完了/能鸽很久，同时身体也有所好转（九月的不良反应使我开始异常的珍惜健康的时间），和朋友骑行、去西湖、去 704 工程、看书，天气适宜，实在是不能更惬意了。 十一月。十一月的开头大概维持了十月的快乐，直到月底，闲的无聊刷 v2ex 时，看到字节 base 杭州的一个部门有实习 hc，我一直没有经历过大厂技术面试，我觉得我需要感受一下面试氛围。但是真的加了微信后又觉得，还没怎么刷 leetcode，并且对这个部门也不了解（问了学长也说不太清楚），本来打算拒掉，但是内推的前辈看了我的简历过后，觉得还行，于是把我推了&amp;hellip;因此，在 11 月 26 号，我正式的开始了我的面试之旅。 十二月。我今年从没有这么认真的学习过。跟 HR 商量后，我大约有两个星期的复习时间，在这两个星期里：我曾一天（在上课的情况下）ac 了 10+ 道题；曾马原三节课肝完了 MySQL 面经；看过的公众号技术文章几十篇；看完了牛客最近三个月所有字节后端实习的面经；累计刷了约 70 道题（在同时背面经的情况下）。MySQL、Rediscover、OS、AsyncIO、协程实现原理、QUIC、各种算法、计网等全部在这两个星期内搞完。可能有些自我感动，但我确实几乎没有这样肝过。总之，十二月的时间几乎全部花在准备/面试上。最终，月底拿到 offer。  回顾这一年，我似乎总是被各种事件推着走，同时接触到的现实又让高中时期的想法有些冲突，这样的冲突一直持续到现在，促使我反思。表面上看，我认为我自己在这一年花了太多时间在技术上，忽视了学习其他知识，并且有大量时间花费在了低产出甚至副产出的事情上，而浪费的这些精力又使我在之后的时间变得颓废，无暇做其他事情。我的这一整年几乎都是碎片化、无规划的，这让我一方面在局部来看很闲因此找了很多（没什么价值的）事情去做，一方面又占据了我剩下的时间。但是这件事本质在于我对未来的规划不明确，加之日常生活的不规律造成了这些。
@@ -24,10 +24,10 @@
     
     <item>
       <title>写在21岁</title>
-      <link>https://lyle.net.cn/life/birthday-21/</link>
+      <link>/life/birthday-21/</link>
       <pubDate>Tue, 09 Nov 2021 23:10:10 +0800</pubDate>
       
-      <guid>https://lyle.net.cn/life/birthday-21/</guid>
+      <guid>/life/birthday-21/</guid>
       <description>又到了过生日的时候，我对生日的激情可能自高中起便逐渐消磨掉了。初中的生日可以期待一顿巴奴火锅（虽然生日的主角变成了我的表弟让我很不舒服），自高中住校起便没再好好过过一个生日了。大部分时候的生日，与平淡无奇的其他日子并无不同，即便是 18 岁生日，我也只是在校外吃了顿烤肉拌饭——或许加了杯冰红茶。
 我似乎会下意识的认为只要忽略掉生日这件事就可以假装并没有长大，但是事实上——我已经 21 岁了。这样的年龄在我 13 岁时是难以想象的大，但是真的走到了今天，却好像还是那么的&amp;hellip;平平无奇。
 好吧，简单回顾一下略显失败的 20 岁：在北京呆了一个月；做了一点开源；对计算机的理解更深了；学了一点后端；学习了几个模型与方法；成功苟过了 70+ 学分的大二生活；从学校搬出来住；在 20 岁的末尾开始认真看书学习 因果推断（causal inference）；从坚定又变得迷茫；胖了很多
@@ -42,10 +42,10 @@ lyle 于杭州 2021.11.09.00-00</description>
     
     <item>
       <title>写在21岁</title>
-      <link>https://lyle.net.cn/life/21-birthday/</link>
+      <link>/life/21-birthday/</link>
       <pubDate>Tue, 09 Nov 2021 00:06:38 +0800</pubDate>
       
-      <guid>https://lyle.net.cn/life/21-birthday/</guid>
+      <guid>/life/21-birthday/</guid>
       <description>又到了过生日的时候，我对生日的激情可能自高中起便逐渐消磨掉了。初中的生日可以期待一顿巴奴火锅（虽然生日的主角变成了我的表弟让我很不舒服），自高中住校起便没再好好过过一个生日了。大部分时候的生日，与平淡无奇的其他日子并无不同，即便是 18 岁生日，我也只是在校外吃了顿烤肉拌饭——或许加了杯冰红茶。
 我似乎会下意识的认为只要忽略掉生日这件事就可以假装并没有长大，但是事实上——我已经 21 岁了。这样的年龄在我 13 岁时是难以想象的大，但是真的走到了今天，却好像还是那么的&amp;hellip;平平无奇。
 好吧，简单回顾一下略显失败的 20 岁：在北京呆了一个月；做了一点开源；对计算机的理解更深了；学了一点后端；学习了几个模型与方法；成功苟过了 70+ 学分的大二生活；从学校搬出来住；在 20 岁的末尾开始认真看书学习 因果推断（causal inference）；从坚定又变得迷茫；胖了很多
@@ -60,10 +60,10 @@ lyle 于杭州 2021.11.09.00-00</description>
     
     <item>
       <title>2020暑假总结</title>
-      <link>https://lyle.net.cn/life/2020-sunmmer-vacation-summary/</link>
+      <link>/life/2020-sunmmer-vacation-summary/</link>
       <pubDate>Tue, 01 Sep 2020 21:26:13 +0800</pubDate>
       
-      <guid>https://lyle.net.cn/life/2020-sunmmer-vacation-summary/</guid>
+      <guid>/life/2020-sunmmer-vacation-summary/</guid>
       <description>Part1 · 计划完成度  FastAPI+ORM学习，完成开发基于短信的To-Do List提醒 / 初步完成 完成《统计学习方法》与《PyTorch实战》阅读 / 完成《PyTorch实战》 完成集智数学基础课程学习 / 完成度低 盈利超过4k / 亏损 完成Vue.js+Boostrap简单应用学习，并将社交项目推进至1/10（完成后台部分开发及部分前端页面）/ 无进度  Part2 · 总结回顾 这可能是我最为颓废的一个假期，因想专心看书补基础而放弃留杭与实习选择回家，但是最终却几乎整整看了一个月的小说。
 没有任何一个深入研究的方向，仅仅只是在表层的实现了todo项目的几个crud函数。
 这个假期无疑是失败的。</description>
@@ -71,29 +71,29 @@ lyle 于杭州 2021.11.09.00-00</description>
     
     <item>
       <title>世界观之——和C的聊天记录</title>
-      <link>https://lyle.net.cn/life/worldview1/</link>
+      <link>/life/worldview1/</link>
       <pubDate>Wed, 19 Aug 2020 23:00:23 +0800</pubDate>
       
-      <guid>https://lyle.net.cn/life/worldview1/</guid>
+      <guid>/life/worldview1/</guid>
       <description> 因为某C朋友的好奇，聊了聊关于我的世界观，因见识与阅历存在疏漏，如有见解还望指出。截图已获对方允许。
  </description>
     </item>
     
     <item>
       <title>2020下半年书单记录（更新中）</title>
-      <link>https://lyle.net.cn/life/the-booklist-of-the-rest-of-2020/</link>
+      <link>/life/the-booklist-of-the-rest-of-2020/</link>
       <pubDate>Thu, 13 Aug 2020 19:19:55 +0800</pubDate>
       
-      <guid>https://lyle.net.cn/life/the-booklist-of-the-rest-of-2020/</guid>
+      <guid>/life/the-booklist-of-the-rest-of-2020/</guid>
       <description>书籍类  一百个人的十年 疯狂的投资：跨越大西洋电缆的商业传奇 民主的奇迹： 美国宪法制定的127天  论文类 </description>
     </item>
     
     <item>
       <title>为什么我需要一个博客</title>
-      <link>https://lyle.net.cn/life/why-we-need-blogs/</link>
+      <link>/life/why-we-need-blogs/</link>
       <pubDate>Wed, 12 Aug 2020 18:53:19 +0800</pubDate>
       
-      <guid>https://lyle.net.cn/life/why-we-need-blogs/</guid>
+      <guid>/life/why-we-need-blogs/</guid>
       <description>历史 最早接触建站是在2013年，当时还是初二的我斥巨资（就当时而言）买入了一个域名ycwl.pw，然后在此基础上折腾过一段时间的discuz和wordpress，甚至还帮其他人做过一些小网页赚过十几块钱。
 然而当时无非是在html模版的基础上改些小地方，还记得当时那简陋的dreamwear，并没有深入去学JavaScript或PHP，期间多次想坚持写个blog，可似乎最长的一次也不过坚持了一两个月便放弃了，甚至现在连数据都丢失掉了。
 大学之后，觉得闲置lyleshaw.com这个域名有些浪费，因此又重新用wordpress建了个blog，但是时隔半年却一篇产出都没有&amp;hellip;

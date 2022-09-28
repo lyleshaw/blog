@@ -2,18 +2,18 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>alert on Lyle&#39;s Blog</title>
-    <link>https://lyle.net.cn/tags/alert/</link>
+    <link>/tags/alert/</link>
     <description>Recent content in alert on Lyle&#39;s Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
     <copyright>&lt;a href=&#34;https://creativecommons.org/licenses/by-nc/4.0/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;CC BY-NC 4.0&lt;/a&gt;</copyright>
-    <lastBuildDate>Wed, 24 Nov 2021 08:11:02 +0800</lastBuildDate><atom:link href="https://lyle.net.cn/tags/alert/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Wed, 24 Nov 2021 08:11:02 +0800</lastBuildDate><atom:link href="/tags/alert/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>如何选择一个消息提醒服务</title>
-      <link>https://lyle.net.cn/tech/how-to-select-a-alert-server/</link>
+      <link>/tech/how-to-select-a-alert-server/</link>
       <pubDate>Wed, 24 Nov 2021 08:11:02 +0800</pubDate>
       
-      <guid>https://lyle.net.cn/tech/how-to-select-a-alert-server/</guid>
+      <guid>/tech/how-to-select-a-alert-server/</guid>
       <description>我一直挺关注并希望有一个消息推送工具，感觉有了这样一个东西仿佛能做很多东西（比如 TODO 到期发个通知，或者收到（不怎么看的）QQ 上重要的通知转发一下），今天把之前看到的各种工具以及自己的感受总结一下。
 先说一下主要的几个推送手段
    推送手段 优点 缺点     微信服务号推送 基于微信 需要有服务号（目前只能企业/组织申请），用他人的则有限制   微信个人号 基于微信 需要购买 Wechaty Token   企业微信应用推送 基于微信 企微推送藏在微信列表中（类似公众号通知），不够优雅   企业微信消息推送 基于微信 企微推送藏在微信列表中（类似公众号通知），不够优雅   短信推送 无网可用 贵，API 要 3 分一条   邮件推送 便宜且方便 大部分人不会实时check邮箱，及时性差   安卓推送 便宜且方便 iOS 不可用，且有概率被内存管理杀掉   iOS 推送 便宜且方便 安卓不可用   Telegram 推送 便宜且方便 大部分人没有一直开梯子查看 tg 消息的习惯   飞书/钉钉推送 便宜且方便 大部分不会一直盯飞书/钉钉   Webhook 可自定义 门槛高，需要一台服务器/会用云函数    我更倾向于 全部消息 -&amp;gt; 安卓/iOS，短信验证码+手机消息 -&amp;gt; 邮件推送。</description>
